@@ -2,9 +2,13 @@ package com.newworld.newworldapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.newworld.newworldapp.db.DbHelper;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,32 +16,41 @@ import java.util.List;
 import java.util.Set;
 
 public class CitiesActivity extends AppCompatActivity {
-    private SingletonMap singletonMap;
-    private HashMap<String, HashMap<String, List<Object>>> map;
-
-    private void initDict(){
-        //La instancia ya deberia existir y se nos devolveria el singleton no vacio
-        map = new HashMap<String, HashMap<String, List<Object>>>();
-        singletonMap = SingletonMap.getInstance(map);
-    }
+    private DbHelper dbHelper;
+    private SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cities);
-        initDict();
-        //ListView listView = new ListView(this);
+
         ListView listView = (ListView) findViewById(R.id.listview);
         List<String> list = new ArrayList<String>();
-        Set<String> keys = singletonMap.map.keySet();
-        for(String ciudad : keys){
-            list.add(ciudad);
+
+        dbHelper = (DbHelper) SingletonMap.getInstance().get("dbh");
+        if (dbHelper == null) {
+            dbHelper = new DbHelper(getApplicationContext());
+            SingletonMap.getInstance().put("dbh", dbHelper);
         }
-        //list.add("Ocaso");
-        //list.add("Primera Luz");
-        //list.add("Bosque Luminoso");
+
+        dbHelper.openDataBase();
+        db = dbHelper.getReadableDatabase();
+        if(db != null){
+            Cursor c = db.rawQuery("SELECT nombre FROM t_asentamiento ORDER BY nombre ASC", null);
+
+            if(c != null){
+                c.moveToFirst();
+                do{
+                    String nombre = c.getString(0);
+                    list.add(nombre);
+                }while(c.moveToNext());
+            }
+        }
+
         ArrayAdapter<String> arrayAdapter;
         arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
         listView.setAdapter(arrayAdapter);
+
+        db.close();
     }
 }
