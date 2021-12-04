@@ -17,7 +17,6 @@ import java.util.Set;
 
 public class CitiesActivity extends AppCompatActivity {
     private DbHelper dbHelper;
-    private SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,32 +24,18 @@ public class CitiesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cities);
 
         ListView listView = (ListView) findViewById(R.id.listview);
-        List<String> list = new ArrayList<String>();
+        List<String> list;
 
         dbHelper = (DbHelper) SingletonMap.getInstance().get("dbh");
-        if (dbHelper == null) {
+        /*if (dbHelper == null) {
             dbHelper = new DbHelper(getApplicationContext());
             SingletonMap.getInstance().put("dbh", dbHelper);
-        }
+        }*/
 
-        dbHelper.openDataBase();
-        db = dbHelper.getReadableDatabase();
-        if(db != null){
-            Cursor c = db.rawQuery("SELECT nombre FROM t_asentamiento ORDER BY nombre ASC", null);
-
-            if(c != null){
-                c.moveToFirst();
-                do{
-                    String nombre = c.getString(0);
-                    list.add(nombre);
-                }while(c.moveToNext());
-            }
-        }
+        list = dbHelper.getCiudades();
 
         ArrayAdapter<String> arrayAdapter;
         arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
         listView.setAdapter(arrayAdapter);
-
-        db.close();
     }
 }
