@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.newworld.newworldapp.db.DbHelper;
 
@@ -23,32 +25,6 @@ public class MainActivity extends AppCompatActivity {
 
     private DbHelper dbHelper;
 
-    private static final String CITY_NAMES[] = {
-            "Primera Luz",
-            "Cayos de Alfanje",
-            "Guardaelviento",
-            "Riscos del Monarca",
-            "Aguas Fétidas",
-            "Ocaso",
-            "Costa de la Zozobra",
-            "Altos de Escamanegra",
-            "Ciénaga de los Tejedores",
-            "Bosque Luminoso",
-            "Valle del Pesar",
-    };
-
-    private static final String[] KEYS = {
-            "Inventario",
-            "Eventos",
-    };
-
-    private static final Articulo[] ARTICULOS = {
-            new Articulo("Armadura", "Amuleto", "Amuleto del hechizado del barbaro"),
-            new Articulo("Armadura", "Pecho", "Armadura de placas del aventurero"),
-            new Articulo("Arma", "Martillo", "Mazo abominable"),
-            new Articulo("Recurso", "Recurso", "Vaso abandonado"),
-    };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
             dbHelper = new DbHelper(getApplicationContext());
             SingletonMap.getInstance().put("dbh", dbHelper);
         }
+        dbHelper.getReadableDatabase(); //Usamos este comando para crear la base de datos en el caso de que no exista
 
     }
 
