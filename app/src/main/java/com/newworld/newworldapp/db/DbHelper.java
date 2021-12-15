@@ -130,4 +130,40 @@ public class DbHelper extends SQLiteOpenHelper {
         return list;
     }
 
+    public List<String> getEventosAsentamiento(String asentamiento) {
+        List<String> list = new ArrayList<>();
+        openDB();
+        db = getReadableDatabase();
+        if(db != null){
+            int idAsentamiento = getIdAsentamiento(asentamiento);
+            String[] selectionArgs = {Integer.toString(idAsentamiento)};
+            //NOT WORKING
+            Cursor c = db.rawQuery("SELECT nombre FROM t_evento WHERE id_asentamiento = ?", selectionArgs);
+            if(c != null){
+                c.moveToFirst();
+                do{
+                    String nombre = c.getString(0);
+                    list.add(nombre);
+                }while(c.moveToNext());
+            }
+        }
+        closeDB();
+        return list;
+    }
+
+    private int getIdAsentamiento(String asentamiento) {
+        int idAsentamiento = -1;
+        openDB();
+        db = getReadableDatabase();
+        if(db != null){
+            String[] selectionArgs = {asentamiento};
+            Cursor c = db.rawQuery("SELECT id FROM t_asentamiento WHERE nombre = ?", selectionArgs);
+            if(c != null){
+                c.moveToFirst();
+                idAsentamiento = c.getInt(0);
+            }
+        }
+        closeDB();
+        return idAsentamiento;
+    }
 }
