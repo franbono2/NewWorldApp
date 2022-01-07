@@ -25,7 +25,7 @@ public class DbHelper extends SQLiteOpenHelper {
             "FOREIGN KEY(id_asentamiento) REFERENCES t_asentamiento(id))";
     private static final String TABLE_ASENTAMIENTO = "CREATE TABLE IF NOT EXISTS t_asentamiento (" +
             "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-            "nombre INTEGER NOT NULL," +
+            "nombre TEXT NOT NULL," +
             "tipo TEXT," +
             "posada INTEGER," +
             "id_inventario INTEGER," +
@@ -45,14 +45,16 @@ public class DbHelper extends SQLiteOpenHelper {
             "id_inventario INTEGER," +
             "FOREIGN KEY(id_inventario) REFERENCES t_inventario(id))";
 
-    private static final String INSERT_EVENTO = "INSERT INTO t_evento VALUES (0,'Invasión en Aguas Fétidas','invasion','27/11/21',0);";
+    private static final String INSERT_EVENTO = "INSERT INTO t_evento VALUES (0,'Invasión en Aguas Fétidas','Invasion','27/11/2021',0)," +
+            " (1,'Guerra en Aguas Fétidas','Guerra','27/11/2021',0);";
+
     private static final String INSERT_ASENTAMIENTO = "INSERT INTO t_asentamiento VALUES (0,'Aguas Fétidas','pueblo',1,0)," +
             " (1,'Bosque Luminoso','ciudad',1,1)," +
             " (2,'Cayos del Alfanje','villa',1,2)," +
             " (3,'Ciénaga de los Tejedores','aldea',1,3)," +
             " (4,'Costa de la Zozobra','villa',1,4)," +
             " (5,'Ocaso','ciudad',1,5)," +
-            " (6,'Guadalviento','villa',1,6)," +
+            " (6,'Guadaelviento','villa',1,6)," +
             " (7,'Altos de Escamanegra','capital',1,7)," +
             " (8,'Primera Luz','pueblo',1,8)," +
             " (9,'Riscos del Monarca','aldea',1,9)," +
@@ -68,7 +70,11 @@ public class DbHelper extends SQLiteOpenHelper {
             " (8,200,170)," +
             " (9,220,130)," +
             " (10,210,100);";
-    private static final String INSERT_OBJETO = "INSERT INTO t_objeto VALUES (0,'Poción de curación',20,2,'Consumible para aumentar la salud','Arcana, enemigos','consumibles',0);";
+    private static final String INSERT_OBJETO = "INSERT INTO t_objeto VALUES (0,'Poción de curación',20,2,'Consumible para aumentar la salud','Arcana, enemigos','consumibles',0)," +
+            " (1,'Golpe Abisal',1,10,'Un arama de luz y justicia tranformada en malicia','Enemigos','armas', 0)," +
+            " (2,'Abrigo del aventurero',1,6,'Un abrigo bien pertrechado, te servira igual de bien que a su antigo dueño','Enemigos','armaduras', 0)," +
+            " (3,'Poción de mana',20,2,'Consumible para aumentar el mana','Arcana, enemigos','consumibles',0)," +
+            " (4,'Ración ligera',20,2,'Consumible para activar la regeneracion de salud','Arcana, enemigos','consumibles',0);";
 
     private SQLiteDatabase db;
 
@@ -130,4 +136,146 @@ public class DbHelper extends SQLiteOpenHelper {
         return list;
     }
 
+    public List<String> getEventosAsentamiento(String asentamiento) {
+        List<String> list = new ArrayList<>();
+        openDB();
+        db = getReadableDatabase();
+        if(db != null){
+            int idAsentamiento = getIdAsentamiento(asentamiento);
+            String[] selectionArgs = {Integer.toString(idAsentamiento)};
+            //NOT WORKING
+            Cursor c = db.rawQuery("SELECT nombre FROM t_evento WHERE id_asentamiento = ?", selectionArgs);
+            if(c != null){
+                c.moveToFirst();
+                do{
+                    String nombre = c.getString(0);
+                    list.add(nombre);
+                }while(c.moveToNext());
+            }
+        }
+        closeDB();
+        return list;
+    }
+
+    public List<String> getEventosAsentamientoJoin(String asentamiento) {
+        List<String> list = new ArrayList<>();
+        openDB();
+        db = getReadableDatabase();
+        if(db != null){
+            String[] selectionArgs = {asentamiento};
+            Cursor c = db.rawQuery("SELECT t_evento.nombre FROM t_evento INNER JOIN t_asentamiento ON t_evento.id_asentamiento = t_asentamiento.id WHERE t_asentamiento.nombre = ?", selectionArgs);
+            if(c != null){
+                c.moveToFirst();
+                do{
+                    String nombre = c.getString(0);
+                    list.add(nombre);
+                }while(c.moveToNext());
+            }
+        }
+        closeDB();
+        return list;
+    }
+
+    private int getIdAsentamiento(String asentamiento) {
+        int idAsentamiento = -1;
+        openDB();
+        db = getReadableDatabase();
+        if(db != null){
+            String[] selectionArgs = {asentamiento};
+            Cursor c = db.rawQuery("SELECT id FROM t_asentamiento WHERE nombre = ?", selectionArgs);
+            if(c != null){
+                c.moveToFirst();
+                idAsentamiento = c.getInt(0);
+            }
+        }
+        closeDB();
+        return idAsentamiento;
+    }
+
+    public boolean EventosIsNotEmpty(String asentamiento) {
+        boolean exist = false;
+        openDB();
+        db = getReadableDatabase();
+        if(db != null){
+            String[] selectionArgs = {asentamiento};
+            Cursor c = db.rawQuery("SELECT t_evento.nombre FROM t_evento INNER JOIN t_asentamiento ON t_evento.id_asentamiento = t_asentamiento.id WHERE t_asentamiento.nombre = ?", selectionArgs);
+            if(c != null){
+                exist = c.moveToFirst();
+            }
+        }
+        closeDB();
+        return exist;
+    }
+
+
+    //devuelve tipo, fecha, id_asentamiento
+    public List<String> getAtrEvento(String nombre) {
+        List<String> res = new ArrayList<>();
+        openDB();
+        db = getReadableDatabase();
+        if (db != null) {
+            String[] selectionArgs = {nombre};
+            Cursor c = db.rawQuery("SELECT tipo, fecha, id_asentamiento FROM t_evento WHERE nombre = ?", selectionArgs);
+            if (c != null) {
+                c.moveToFirst();
+                res.add(c.getString(0));
+                res.add(c.getString(1));
+                res.add(c.getString(2));
+            }
+        }
+        closeDB();
+        return res;
+    }
+
+    public int getPeso(String asentamiento) {
+        int peso = -1;
+        openDB();
+        db = getReadableDatabase();
+        if(db != null){
+            String[] selectionArgs = {asentamiento};
+            Cursor c = db.rawQuery("SELECT t_inventario.peso_acumulado FROM t_inventario INNER JOIN t_asentamiento ON t_inventario.id = t_asentamiento.id_inventario WHERE t_asentamiento.nombre = ?", selectionArgs);
+            if(c != null){
+                c.moveToFirst();
+                peso = c.getInt(0);
+            }
+        }
+        closeDB();
+        return peso;
+    }
+
+    public int getCapacidad(String asentamiento) {
+        int capacidad = -1;
+        openDB();
+        db = getReadableDatabase();
+        if(db != null){
+            String[] selectionArgs = {asentamiento};
+            Cursor c = db.rawQuery("SELECT t_inventario.capacidad FROM t_inventario INNER JOIN t_asentamiento ON t_inventario.id = t_asentamiento.id_inventario WHERE t_asentamiento.nombre = ?", selectionArgs);
+            if(c != null){
+                c.moveToFirst();
+                capacidad = c.getInt(0);
+            }
+        }
+        closeDB();
+        return capacidad;
+    }
+
+    public List<String> getNombreObjetosCategoria(String asentamiento, String armas) {
+        List<String> list = new ArrayList<>();
+        openDB();
+        db = getReadableDatabase();
+        if(db != null){
+            String[] selectionArgs = {asentamiento, armas};
+            Cursor c = db.rawQuery("SELECT t_objeto.nombre FROM t_objeto INNER JOIN t_inventario ON t_objeto.id_inventario = t_inventario.id INNER JOIN t_asentamiento ON t_inventario.id = t_asentamiento.id_inventario WHERE t_asentamiento.nombre = ? AND t_objeto.categoria = ?", selectionArgs);
+            if(c != null){
+                c.moveToFirst();
+                do{
+                    String nombre = c.getString(0);
+                    list.add(nombre);
+                }while(c.moveToNext());
+            }
+        }
+        closeDB();
+        return list;
+
+    }
 }
