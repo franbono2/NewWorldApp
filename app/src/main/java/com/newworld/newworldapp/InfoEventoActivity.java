@@ -12,6 +12,7 @@ import com.newworld.newworldapp.db.DbHelper;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class InfoEventoActivity extends AppCompatActivity {
 
@@ -46,7 +47,7 @@ public class InfoEventoActivity extends AppCompatActivity {
         tv_lugar.setText(lugar);
 
         tv_tipo.setText(tipo);
-        idImage = getResources().getIdentifier(tipo,"drawable",getPackageName());
+        idImage = getResources().getIdentifier(tipo.toLowerCase(Locale.ROOT),"drawable",getPackageName());
         imagen.setImageResource(idImage);
 
         try {

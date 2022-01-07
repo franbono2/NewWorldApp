@@ -30,6 +30,11 @@ public class CitiesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cities);
 
         listView = (ListView) findViewById(R.id.listview);
+        //listView.setBackgroundColor(getResources().getColor(R.color.main));
+        int idImage = getResources().getIdentifier("background","drawable",getPackageName());
+        listView.setBackground(getResources().getDrawable(idImage));
+
+
 
         dbHelper = (DbHelper) SingletonMap.getInstance().get("dbh");
         /*if (dbHelper == null) {

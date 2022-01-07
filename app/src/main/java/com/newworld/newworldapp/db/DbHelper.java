@@ -45,8 +45,8 @@ public class DbHelper extends SQLiteOpenHelper {
             "id_inventario INTEGER," +
             "FOREIGN KEY(id_inventario) REFERENCES t_inventario(id))";
 
-    private static final String INSERT_EVENTO = "INSERT INTO t_evento VALUES (0,'Invasión en Aguas Fétidas','invasion','27/11/2021',0)," +
-            " (1,'Guerra en Aguas Fétidas','guerra','27/11/2021',0);";
+    private static final String INSERT_EVENTO = "INSERT INTO t_evento VALUES (0,'Invasión en Aguas Fétidas','Invasion','27/11/2021',0)," +
+            " (1,'Guerra en Aguas Fétidas','Guerra','27/11/2021',0);";
 
     private static final String INSERT_ASENTAMIENTO = "INSERT INTO t_asentamiento VALUES (0,'Aguas Fétidas','pueblo',1,0)," +
             " (1,'Bosque Luminoso','ciudad',1,1)," +
