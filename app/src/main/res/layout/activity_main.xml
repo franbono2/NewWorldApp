@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.61" />
+        app:layout_constraintVertical_bias="0.773" />
 
     <TextView
         android:id="@+id/textView"
@@ -27,22 +27,25 @@
         android:foregroundTint="#9C27B0"
         android:text="Bienvenidos al nuevo mundo"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.164" />
+        app:layout_constraintVertical_bias="0.002" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="356dp"
-        android:layout_height="69dp"
+        android:layout_width="379dp"
+        android:layout_height="118dp"
         android:layout_marginTop="68dp"
         android:fontFamily="sans-serif-condensed-medium"
         android:text="Con esta app obtendrás información sobre los recursos que tienes almacenado en los distintos asentamientos y su respectiva descripción, así como los próximos eventos que tendrán lugar en cada ciudad"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.709"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.0" />
@@ -53,10 +56,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="356dp"
         android:layout_marginBottom="42dp"
-        android:text="Entrar en Aethereum"
+        android:text="Entrar en Aeternum"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.543" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,8 +1,10 @@
 package com.newworld.newworldapp;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -10,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.newworld.newworldapp.db.DbHelper;
 
@@ -40,7 +43,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void botonPulsado (View view) {
-        Intent intento = new Intent(this, CitiesActivity.class);
-        startActivity(intento);
+        AlertDialog.Builder alerta = new AlertDialog.Builder(MainActivity.this);
+        alerta.setMessage("¿Desea entrar en Aeternum?")
+                .setCancelable(false)
+                .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        Intent intento = new Intent(MainActivity.this, CitiesActivity.class);
+                        startActivity(intento);
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog titulo = alerta.create();
+        titulo.setTitle("Ciudades");
+        titulo.show();
     }
 }

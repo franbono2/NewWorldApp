@@ -25,7 +25,7 @@ public class DbHelper extends SQLiteOpenHelper {
             "FOREIGN KEY(id_asentamiento) REFERENCES t_asentamiento(id))";
     private static final String TABLE_ASENTAMIENTO = "CREATE TABLE IF NOT EXISTS t_asentamiento (" +
             "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-            "nombre INTEGER NOT NULL," +
+            "nombre TEXT NOT NULL," +
             "tipo TEXT," +
             "posada INTEGER," +
             "id_inventario INTEGER," +
@@ -52,7 +52,7 @@ public class DbHelper extends SQLiteOpenHelper {
             " (3,'Ciénaga de los Tejedores','aldea',1,3)," +
             " (4,'Costa de la Zozobra','villa',1,4)," +
             " (5,'Ocaso','ciudad',1,5)," +
-            " (6,'Guadalviento','villa',1,6)," +
+            " (6,'Guadaelviento','villa',1,6)," +
             " (7,'Altos de Escamanegra','capital',1,7)," +
             " (8,'Primera Luz','pueblo',1,8)," +
             " (9,'Riscos del Monarca','aldea',1,9)," +
@@ -151,6 +151,25 @@ public class DbHelper extends SQLiteOpenHelper {
         return list;
     }
 
+    public List<String> getEventosAsentamientoJoin(String asentamiento) {
+        List<String> list = new ArrayList<>();
+        openDB();
+        db = getReadableDatabase();
+        if(db != null){
+            String[] selectionArgs = {asentamiento};
+            Cursor c = db.rawQuery("SELECT t_evento.nombre FROM t_evento INNER JOIN t_asentamiento ON t_evento.id_asentamiento = t_asentamiento.id WHERE t_asentamiento.nombre = ?", selectionArgs);
+            if(c != null){
+                c.moveToFirst();
+                do{
+                    String nombre = c.getString(0);
+                    list.add(nombre);
+                }while(c.moveToNext());
+            }
+        }
+        closeDB();
+        return list;
+    }
+
     private int getIdAsentamiento(String asentamiento) {
         int idAsentamiento = -1;
         openDB();
@@ -165,5 +184,20 @@ public class DbHelper extends SQLiteOpenHelper {
         }
         closeDB();
         return idAsentamiento;
+    }
+
+    public boolean EventosIsNotEmpty(String asentamiento) {
+        boolean exist = false;
+        openDB();
+        db = getReadableDatabase();
+        if(db != null){
+            String[] selectionArgs = {asentamiento};
+            Cursor c = db.rawQuery("SELECT t_evento.nombre FROM t_evento INNER JOIN t_asentamiento ON t_evento.id_asentamiento = t_asentamiento.id WHERE t_asentamiento.nombre = ?", selectionArgs);
+            if(c != null){
+                exist = c.moveToFirst();
+            }
+        }
+        closeDB();
+        return exist;
     }
 }

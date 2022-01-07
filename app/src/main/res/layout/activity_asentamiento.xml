@@ -8,9 +8,11 @@
 
     <TextView
         android:id="@+id/textAsentamiento"
-        android:layout_width="215dp"
-        android:layout_height="39dp"
+        android:layout_width="348dp"
+        android:layout_height="54dp"
         android:text="@string/textview"
+        android:textAlignment="center"
+        android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -22,7 +24,7 @@
         android:id="@+id/b_inventario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="84dp"
         android:text="@string/inventario"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

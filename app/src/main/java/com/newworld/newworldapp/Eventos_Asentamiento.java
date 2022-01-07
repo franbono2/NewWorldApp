@@ -24,7 +24,7 @@ public class Eventos_Asentamiento extends AppCompatActivity {
 
         lv_eventos = findViewById(R.id.LV_EventosAsentmiento);
         dbHelper = (DbHelper) SingletonMap.getInstance().get("dbh");
-        nombreEventos = dbHelper.getEventosAsentamiento(asentamiento);
+        nombreEventos = dbHelper.getEventosAsentamientoJoin(asentamiento);
 
         ArrayAdapter<String> arrayAdapter;
         arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nombreEventos);
