@@ -6,6 +6,10 @@
         <entry key="..\:/Users/Francisco Bono/Desktop/NewWorldApp/app/src/main/res/layout/activity_asentamiento.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Francisco Bono/Desktop/NewWorldApp/app/src/main/res/layout/activity_eventos_asentamiento.xml" value="0.33" />
         <entry key="..\:/Users/Francisco Bono/Desktop/NewWorldApp/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/danij/AndroidStudioProjects/NewWorldApp/app/src/main/res/layout/activity_cities.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/danij/AndroidStudioProjects/NewWorldApp/app/src/main/res/layout/activity_eventos_asentamiento.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/danij/AndroidStudioProjects/NewWorldApp/app/src/main/res/layout/activity_info_evento.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/danij/AndroidStudioProjects/NewWorldApp/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/franb/Desktop/NewWorldApp/app/src/main/res/layout/activity_asentamiento.xml" value="0.33" />
         <entry key="..\:/Users/franb/Desktop/NewWorldApp/app/src/main/res/layout/activity_cities.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/franb/Desktop/NewWorldApp/app/src/main/res/layout/activity_eventos_asentamiento.xml" value="0.36666666666666664" />
@@ -13,6 +17,7 @@
       </map>
     </option>
   </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
