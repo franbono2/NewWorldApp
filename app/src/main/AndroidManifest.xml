@@ -10,7 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NewWorldApp">
         <activity
+
             android:name=".InfoEventoActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".Inventario_Asentamiento"
             android:exported="false" />
         <activity
             android:name=".Eventos_Asentamiento"

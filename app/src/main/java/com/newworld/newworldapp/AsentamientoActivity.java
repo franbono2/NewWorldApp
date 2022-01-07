@@ -40,7 +40,7 @@ public class AsentamientoActivity extends AppCompatActivity {
     }
 
     public void clickB_Inventario (View view) {
-        //Intent intento = new Intent(this, CitiesActivity.class);
-        //startActivity(intento);
+        Intent intento = new Intent(this, Inventario_Asentamiento.class);
+        startActivity(intento);
     }
 }
