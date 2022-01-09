@@ -10,10 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NewWorldApp">
         <activity
-
+            android:name=".InfoObjetoActivity"
+            android:exported="false" />
+        <activity
             android:name=".InfoEventoActivity"
             android:exported="false" />
-
         <activity
             android:name=".Inventario_Asentamiento"
             android:exported="false" />

@@ -8,7 +8,7 @@
     tools:context=".InfoEventoActivity">
 
     <TextView
-        android:id="@+id/tv_nombreEvento"
+        android:id="@+id/tv_nombreObjeto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="cursive"
@@ -23,7 +23,7 @@
         app:layout_constraintVertical_bias="0.102" />
 
     <TextView
-        android:id="@+id/tv_tipo"
+        android:id="@+id/tv_cantidad_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -48,20 +48,20 @@
         tools:src="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/tv_cantidad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="40dp"
         android:text="Tipo:"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tv_tipo"
+        app:layout_constraintEnd_toStartOf="@+id/tv_cantidad_value"
         app:layout_constraintHorizontal_bias="0.971"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.238" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/tv_peso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
@@ -69,10 +69,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_cantidad" />
 
     <TextView
-        android:id="@+id/tv_lugar"
+        android:id="@+id/tv_peso_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
@@ -81,8 +81,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/tv_tipo"
+        app:layout_constraintStart_toEndOf="@+id/tv_peso"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cantidad_value"
         app:layout_constraintVertical_bias="0.002" />
 
     <CalendarView
@@ -97,7 +97,7 @@
         app:layout_constraintVertical_bias="0.837" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/tv_descripcion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Fecha:"

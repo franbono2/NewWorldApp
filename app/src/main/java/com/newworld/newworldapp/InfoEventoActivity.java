@@ -20,8 +20,6 @@ public class InfoEventoActivity extends AppCompatActivity {
     private TextView tv_nombreEvento, tv_tipo, tv_lugar;
     private ImageView imagen;
     private CalendarView calendario;
-    private String nombre,fecha,tipo,lugar;
-    private int idImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +28,13 @@ public class InfoEventoActivity extends AppCompatActivity {
 
         dbHelper = (DbHelper) SingletonMap.getInstance().get("dbh");
 
-        tv_nombreEvento = (TextView) findViewById(R.id.tv_nombreEvento);
-        tv_tipo = (TextView) findViewById(R.id.tv_tipo);
-        tv_lugar = (TextView) findViewById(R.id.tv_lugar);
+        tv_nombreEvento = (TextView) findViewById(R.id.tv_nombreObjeto);
+        tv_tipo = (TextView) findViewById(R.id.tv_cantidad_value);
+        tv_lugar = (TextView) findViewById(R.id.tv_peso_value);
         imagen = (ImageView) findViewById(R.id.imageView);
         calendario = (CalendarView) findViewById(R.id.calendarView);
 
+        String nombre,fecha,tipo,lugar;
         nombre = (String)SingletonMap.getInstance().get("evento");
         tv_nombreEvento.setText(nombre);
 
@@ -47,6 +46,7 @@ public class InfoEventoActivity extends AppCompatActivity {
         tv_lugar.setText(lugar);
 
         tv_tipo.setText(tipo);
+        int idImage;
         idImage = getResources().getIdentifier(tipo.toLowerCase(Locale.ROOT),"drawable",getPackageName());
         imagen.setImageResource(idImage);
 

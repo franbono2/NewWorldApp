@@ -70,11 +70,11 @@ public class DbHelper extends SQLiteOpenHelper {
             " (8,200,170)," +
             " (9,220,130)," +
             " (10,210,100);";
-    private static final String INSERT_OBJETO = "INSERT INTO t_objeto VALUES (0,'Poción de curación',20,2,'Consumible para aumentar la salud','Arcana, enemigos','consumibles',0)," +
-            " (1,'Golpe Abisal',1,10,'Un arama de luz y justicia tranformada en malicia','Enemigos','armas', 0)," +
-            " (2,'Abrigo del aventurero',1,6,'Un abrigo bien pertrechado, te servira igual de bien que a su antigo dueño','Enemigos','armaduras', 0)," +
-            " (3,'Poción de mana',20,2,'Consumible para aumentar el mana','Arcana, enemigos','consumibles',0)," +
-            " (4,'Ración ligera',20,2,'Consumible para activar la regeneracion de salud','Arcana, enemigos','consumibles',0);";
+    private static final String INSERT_OBJETO = "INSERT INTO t_objeto VALUES (0,'Pocion de salud',20,2,'Consumible para aumentar la salud','Arcana, enemigos','consumibles',0)," +
+            " (1,'Abretormentas',1,10,'El sol asomó entre las nubes con la promesa de un futuro mejor','Enemigos','Armas', 0)," +
+            " (2,'Abrigo de aventurero',1,6,'Un abrigo bien pertrechado, te servira igual de bien que a su antigo dueño','Enemigos','Armaduras', 0)," +
+            " (3,'Pocion de mana',20,2,'Consumible para aumentar el mana','Arcana, enemigos','Consumibles',0)," +
+            " (4,'Racion ligera',20,2,'Consumible para activar la regeneracion de salud','Cocina, enemigos','Consumibles',0);";
 
     private SQLiteDatabase db;
 
@@ -84,6 +84,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         db.execSQL(TABLE_EVENTO);
         db.execSQL(TABLE_ASENTAMIENTO);
         db.execSQL(TABLE_INVENTARIO);
@@ -208,7 +209,7 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
 
-    //devuelve tipo, fecha, id_asentamiento
+    //devuelve tipo, fecha, id_asentamiento de un evento
     public List<String> getAtrEvento(String nombre) {
         List<String> res = new ArrayList<>();
         openDB();
@@ -221,6 +222,29 @@ public class DbHelper extends SQLiteOpenHelper {
                 res.add(c.getString(0));
                 res.add(c.getString(1));
                 res.add(c.getString(2));
+            }
+        }
+        closeDB();
+        return res;
+    }
+
+    //devuelve cantidad, peso, descripocion, origen, categoria, id_inventario de un objeto
+    public List<String> getAtrObjeto(String nombre) {
+        List<String> res = new ArrayList<>();
+        openDB();
+        db = getReadableDatabase();
+        if (db != null) {
+            String[] selectionArgs = {nombre};
+            Cursor c = db.rawQuery("SELECT cantidad, peso, descripcion, origen, categoria, id_inventario " +
+                    "FROM t_objeto WHERE nombre = ?", selectionArgs);
+            if (c != null) {
+                c.moveToFirst();
+                res.add(c.getString(0));
+                res.add(c.getString(1));
+                res.add(c.getString(2));
+                res.add(c.getString(3));
+                res.add(c.getString(4));
+                res.add(c.getString(5));
             }
         }
         closeDB();
@@ -259,12 +283,12 @@ public class DbHelper extends SQLiteOpenHelper {
         return capacidad;
     }
 
-    public List<String> getNombreObjetosCategoria(String asentamiento, String armas) {
+    public List<String> getNombreObjetosCategoria(String asentamiento, String categoria) {
         List<String> list = new ArrayList<>();
         openDB();
         db = getReadableDatabase();
         if(db != null){
-            String[] selectionArgs = {asentamiento, armas};
+            String[] selectionArgs = {asentamiento, categoria};
             Cursor c = db.rawQuery("SELECT t_objeto.nombre FROM t_objeto INNER JOIN t_inventario ON t_objeto.id_inventario = t_inventario.id INNER JOIN t_asentamiento ON t_inventario.id = t_asentamiento.id_inventario WHERE t_asentamiento.nombre = ? AND t_objeto.categoria = ?", selectionArgs);
             if(c != null){
                 c.moveToFirst();
