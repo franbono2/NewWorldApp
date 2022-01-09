@@ -1,6 +1,46 @@
 <resources>
-    <string name="app_name">NewWorldApp</string>
-    <string name="textview">TextView</string>
-    <string name="inventario">Inventario</string>
-    <string name="eventos">Eventos</string>
+    <string name="app_name" translatable="false">NewWorldApp</string>
+    <string name="textview" translatable="false">TextView</string>
+
+    <!-- activity_main strings -->
+    <string name="ciudad">Ciudades</string>
+    <string name="bienvenidos">Bienvenidos al nuevo mundo</string>
+    <string name="descripcion">Con esta app obtendrás información sobre los recursos que tienes almacenado en los distintos asentamientos y su respectiva descripción, así como los próximos eventos que tendrán lugar en cada ciudad</string>
+    <string name="entrar">Entrar en Aeternum</string>
+    <string name="alerta">¿Desea entrar en Aeternum?</string>
+    <string name="postitiva">Si</string>
+    <string name="negativa">No</string>
+
+    <!-- activity_cities strings -->
+    <string name="toast">Asentamiento seleccionado: </string>
+
+    <!-- activity_asentamiento -->
+    <string name="inventario" >Inventario</string>
+    <string name="eventos" >Eventos</string>
+    <string name="eventos_in_yes" >Eventos en:</string>
+    <string name="eventos_in_no" >No hay eventos actualmente en:</string>
+    <string name="objects_yes" >Inventario de:</string>
+    <string name="objects_no" >No hay objetos actualmente en:</string>
+
+    <!-- activity_inventario -->
+    <string name="consumibles">Consumibles</string>
+    <string name="armaduras">Armaduras</string>
+    <string name="armas">Armas</string>
+    <string name="object_sel">Objeto seleccionado:</string>
+
+    <!-- activity_info_objeto -->
+    <string name="peso">Peso:</string>
+    <string name="categoria">Categoria:</string>
+    <string name="cantidad">Cantidad:</string>
+    <string name="origen">Origen:</string>
+    <string name="desc">Descripción:</string>
+
+    <!-- activity_eventos -->
+    <string name="event_sel">Evento seleccionado:</string>
+
+    <!-- activity_info_evento -->
+    <string name="tipo">Tipo:</string>
+    <string name="lugar">Lugar:</string>
+    <string name="fecha">Fecha:</string>
+
 </resources>

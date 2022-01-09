@@ -3,6 +3,7 @@ package com.newworld.newworldapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -38,10 +39,12 @@ public class Eventos_Asentamiento extends AppCompatActivity {
 
     private void seleccionar_Evento(){
         lv_eventos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            Resources res = getResources();
+            String event_sel = res.getString(R.string.event_sel);
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String seleccionado = nombreEventos.get(position);
-                Toast.makeText(getApplicationContext(),"Evento seleccionado: "+seleccionado,Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),event_sel+ " " +seleccionado,Toast.LENGTH_LONG).show();
                 SingletonMap.getInstance().put("evento",seleccionado);
                 Intent intento = new Intent(getApplicationContext(), InfoEventoActivity.class);
                 startActivity(intento);

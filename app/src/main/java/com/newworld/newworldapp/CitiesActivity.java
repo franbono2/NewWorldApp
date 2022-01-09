@@ -3,6 +3,7 @@ package com.newworld.newworldapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -30,17 +31,12 @@ public class CitiesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cities);
 
         listView = (ListView) findViewById(R.id.listview);
-        //listView.setBackgroundColor(getResources().getColor(R.color.main));
         int idImage = getResources().getIdentifier("background","drawable",getPackageName());
         listView.setBackground(getResources().getDrawable(idImage));
 
 
 
         dbHelper = (DbHelper) SingletonMap.getInstance().get("dbh");
-        /*if (dbHelper == null) {
-            dbHelper = new DbHelper(getApplicationContext());
-            SingletonMap.getInstance().put("dbh", dbHelper);
-        }*/
 
         list = dbHelper.getCiudades();
 
@@ -55,7 +51,9 @@ public class CitiesActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String seleccionado = list.get(position);
-                Toast.makeText(getApplicationContext(),"Asentamiento seleccionado: "+seleccionado,Toast.LENGTH_LONG).show();
+                Resources res = getResources();
+                String asent = res.getString(R.string.toast);
+                Toast.makeText(getApplicationContext(),asent + " " + seleccionado,Toast.LENGTH_LONG).show();
                 SingletonMap.getInstance().put("asentamiento",seleccionado);
                 Intent intento = new Intent(getApplicationContext(), AsentamientoActivity.class);
                 startActivity(intento);

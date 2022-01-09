@@ -6,9 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -25,6 +28,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,13 +49,30 @@ public class MainActivity extends AppCompatActivity {
         }
         dbHelper.getReadableDatabase(); //Usamos este comando para crear la base de datos en el caso de que no exista
 
+        //english
+        setAppLocale("en");
+        
+
+    }
+
+    private void setAppLocale(String localeCode) {
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.setLocale(new Locale(localeCode.toLowerCase()));
+        res.updateConfiguration(conf, dm);
     }
 
     public void botonPulsado (View view) {
         AlertDialog.Builder alerta = new AlertDialog.Builder(MainActivity.this);
-        alerta.setMessage("¿Desea entrar en Aeternum?")
+        Resources res = getResources();
+        String alertamsg = res.getString(R.string.alerta);
+        String positive = res.getString(R.string.postitiva);
+        String negative = res.getString(R.string.negativa);
+        String ciudades = res.getString(R.string.ciudad);
+        alerta.setMessage(alertamsg)
                 .setCancelable(false)
-                .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                .setPositiveButton( positive, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -59,14 +80,14 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intento);
                     }
                 })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                .setNegativeButton( negative, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
                     }
                 });
         AlertDialog titulo = alerta.create();
-        titulo.setTitle("Ciudades");
+        titulo.setTitle(ciudades);
         titulo.show();
     }
 }

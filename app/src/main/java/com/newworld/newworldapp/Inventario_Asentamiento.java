@@ -3,6 +3,7 @@ package com.newworld.newworldapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -24,6 +25,7 @@ public class Inventario_Asentamiento extends AppCompatActivity {
     private List<String> nombre_armas;
     private List<String> nombre_armaduras;
     private List<String> nombre_consumibles;
+    private String object_sel;
     static final String ARMAS = "Armas";
     static final String ARMADURAS = "Armaduras";
     static final String CONSUMIBLES = "Consumibles";
@@ -45,6 +47,9 @@ public class Inventario_Asentamiento extends AppCompatActivity {
         int capacidad = dbHelper.getCapacidad(asentamiento);
         peso_capacidad.setText("" + peso + " / " + capacidad);
 
+        Resources res = getResources();
+        object_sel = res.getString(R.string.object_sel);
+
         nombre_armas = dbHelper.getNombreObjetosCategoria(asentamiento, ARMAS);
         nombre_armaduras = dbHelper.getNombreObjetosCategoria(asentamiento, ARMADURAS);
         nombre_consumibles = dbHelper.getNombreObjetosCategoria(asentamiento, CONSUMIBLES);
@@ -65,7 +70,7 @@ public class Inventario_Asentamiento extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String seleccionado = nombre_armas.get(position);
-                Toast.makeText(getApplicationContext(),"Objeto seleccionado: "+seleccionado,Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),object_sel+ " " +seleccionado,Toast.LENGTH_LONG).show();
                 SingletonMap.getInstance().put("objeto",seleccionado);
                 Intent intento = new Intent(getApplicationContext(), InfoObjetoActivity.class);
                 startActivity(intento);
@@ -76,7 +81,7 @@ public class Inventario_Asentamiento extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String seleccionado = nombre_armaduras.get(position);
-                Toast.makeText(getApplicationContext(),"Objeto seleccionado: "+seleccionado,Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),object_sel+ " "+seleccionado,Toast.LENGTH_LONG).show();
                 SingletonMap.getInstance().put("objeto",seleccionado);
                 Intent intento = new Intent(getApplicationContext(), InfoObjetoActivity.class);
                 startActivity(intento);
@@ -87,7 +92,7 @@ public class Inventario_Asentamiento extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String seleccionado = nombre_consumibles.get(position);
-                Toast.makeText(getApplicationContext(),"Objeto seleccionado: "+seleccionado,Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),object_sel+ " " +seleccionado,Toast.LENGTH_LONG).show();
                 SingletonMap.getInstance().put("objeto",seleccionado);
                 Intent intento = new Intent(getApplicationContext(), InfoObjetoActivity.class);
                 startActivity(intento);
