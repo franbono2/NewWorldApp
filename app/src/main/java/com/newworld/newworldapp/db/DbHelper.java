@@ -386,4 +386,19 @@ public class DbHelper extends SQLiteOpenHelper {
         closeDB();
         return exist;
     }
+
+    public boolean ObjectsIsNotEmpty(String asentamiento, String categoria) {
+        boolean exist = false;
+        openDB();
+        db = getReadableDatabase();
+        if(db != null){
+            String[] selectionArgs = {asentamiento, categoria};
+            Cursor c = db.rawQuery("SELECT t_objeto.nombre FROM t_objeto INNER JOIN t_inventario ON t_objeto.id_inventario = t_inventario.id INNER JOIN t_asentamiento ON t_inventario.id = t_asentamiento.id_inventario WHERE t_asentamiento.nombre = ? AND t_objeto.categoria = ?", selectionArgs);
+            if(c != null){
+                exist = c.moveToFirst();
+            }
+        }
+        closeDB();
+        return exist;
+    }
 }
