@@ -61,7 +61,13 @@ public class Eventos_Asentamiento extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.cIdioma: aux.cambiarIdioma(this); break;
+            case R.id.english: aux.cambiarIdioma(this,"en","Selected language: english");
+                break;
+            case R.id.spain: aux.cambiarIdioma(this,"es","Idioma seleccionado: español");
+                break;
+            //Idioma español por defecto
+            default: aux.cambiarIdioma(this,"es","Idioma seleccionado: español");
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
@@ -21,10 +22,11 @@ public class ToolBar {
         res.updateConfiguration(conf, dm);
     }
 
-    public void cambiarIdioma(Activity app){
-        //english
+    public void cambiarIdioma(Activity app, String country, String toastText){
+
         app.finish();
         app.startActivity(app.getIntent());
-        setAppLocale("en", app);
+        setAppLocale(country, app);
+        Toast.makeText(app.getApplicationContext(),toastText,Toast.LENGTH_LONG).show();
     }
 }

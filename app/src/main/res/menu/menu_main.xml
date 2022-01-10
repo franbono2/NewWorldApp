@@ -3,7 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/cIdioma"
-        android:title="Cambiar idioma"
+        android:id="@+id/spain"
+        android:icon="@drawable/ic_spain"
+        android:title="Spain"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/english"
+        android:icon="@drawable/ic_uk"
+        android:title="English"
         app:showAsAction="always" />
 </menu>
