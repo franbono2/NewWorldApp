@@ -1,7 +1,10 @@
 package com.newworld.newworldapp;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
@@ -12,6 +15,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -20,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.newworld.newworldapp.db.DbHelper;
+import com.newworld.newworldapp.utils.ToolBar;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -32,7 +38,8 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    private DbHelper dbHelper;
+    private final ToolBar aux = new ToolBar();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,25 +49,35 @@ public class MainActivity extends AppCompatActivity {
         Window window = this.getWindow();
         window.setStatusBarColor(this.getResources().getColor(R.color.main));
 
-        dbHelper = (DbHelper) SingletonMap.getInstance().get("dbh");
+        DbHelper dbHelper = (DbHelper) SingletonMap.getInstance().get("dbh");
         if (dbHelper == null) {
             dbHelper = new DbHelper(getApplicationContext());
             SingletonMap.getInstance().put("dbh", dbHelper);
         }
         dbHelper.getReadableDatabase(); //Usamos este comando para crear la base de datos en el caso de que no exista
 
-        //english
-        setAppLocale("en");
-        
+        Toolbar toolbar = findViewById(R.id.tr_toolbar);
+        setSupportActionBar(toolbar);
+        final ActionBar ab = getSupportActionBar();
+        ab.setDisplayShowHomeEnabled(false);
+        ab.setDisplayShowCustomEnabled(true);
+        ab.setDisplayShowTitleEnabled(true);
+        ab.setTitle(R.string.app_name);
 
     }
 
-    private void setAppLocale(String localeCode) {
-        Resources res = getResources();
-        DisplayMetrics dm = res.getDisplayMetrics();
-        Configuration conf = res.getConfiguration();
-        conf.setLocale(new Locale(localeCode.toLowerCase()));
-        res.updateConfiguration(conf, dm);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.cIdioma: aux.cambiarIdioma(this); break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void botonPulsado (View view) {

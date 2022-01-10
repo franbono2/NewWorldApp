@@ -1,39 +1,41 @@
 package com.newworld.newworldapp;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.CalendarView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.newworld.newworldapp.db.DbHelper;
+import com.newworld.newworldapp.utils.ToolBar;
 
 import java.util.List;
 import java.util.Locale;
 
 public class InfoObjetoActivity extends AppCompatActivity {
-
-    private DbHelper dbHelper;
-    private TextView tv_nombreObjeto, tv_cantidad, tv_peso, tv_descripcion, tv_origen, tv_categoria, tv_inventario;
-    private ImageView imagen;
-
+    private final ToolBar aux = new ToolBar();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_objeto);
 
-        dbHelper = (DbHelper) SingletonMap.getInstance().get("dbh");
+        DbHelper dbHelper = (DbHelper) SingletonMap.getInstance().get("dbh");
 
-        tv_nombreObjeto = (TextView) findViewById(R.id.tv_nombreObjeto);
-        tv_cantidad = (TextView) findViewById(R.id.tv_cantidad_value);
-        tv_peso = (TextView) findViewById(R.id.tv_peso_value);
-        tv_descripcion = (TextView) findViewById(R.id.tv_descripcion_value);
-        tv_origen = (TextView) findViewById(R.id.tv_origen_value);
-        tv_categoria = (TextView) findViewById(R.id.tv_categoria_value);
-        tv_inventario = (TextView) findViewById(R.id.tv_inventario_value);
-        imagen = (ImageView) findViewById(R.id.imageView);
+        TextView tv_nombreObjeto = (TextView) findViewById(R.id.tv_nombreObjeto);
+        TextView tv_cantidad = (TextView) findViewById(R.id.tv_cantidad_value);
+        TextView tv_peso = (TextView) findViewById(R.id.tv_peso_value);
+        TextView tv_descripcion = (TextView) findViewById(R.id.tv_descripcion_value);
+        TextView tv_origen = (TextView) findViewById(R.id.tv_origen_value);
+        TextView tv_categoria = (TextView) findViewById(R.id.tv_categoria_value);
+        TextView tv_inventario = (TextView) findViewById(R.id.tv_inventario_value);
+        ImageView imagen = (ImageView) findViewById(R.id.imageView);
 
         String nombre,cantidad,peso,descripcion,origen,categoria,inventario,aux;
 
@@ -58,5 +60,27 @@ public class InfoObjetoActivity extends AppCompatActivity {
         int idImage;
         idImage = getResources().getIdentifier(nombre.toLowerCase(Locale.ROOT).replace(" ",""),"drawable",getPackageName());
         imagen.setImageResource(idImage);
+
+        Toolbar toolbar = findViewById(R.id.tr_toolbar);
+        setSupportActionBar(toolbar);
+        final ActionBar ab = getSupportActionBar();
+        ab.setDisplayShowHomeEnabled(false);
+        ab.setDisplayShowCustomEnabled(true);
+        ab.setDisplayShowTitleEnabled(true);
+        ab.setTitle(R.string.app_name);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.cIdioma: aux.cambiarIdioma(this); break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

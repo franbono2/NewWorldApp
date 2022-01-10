@@ -1,10 +1,15 @@
 package com.newworld.newworldapp;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,18 +18,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.newworld.newworldapp.db.DbHelper;
+import com.newworld.newworldapp.utils.ToolBar;
 
 import java.util.List;
 
 public class Inventario_Asentamiento extends AppCompatActivity {
 
-    private DbHelper dbHelper;
     private ListView lv_armas;
     private ListView lv_armaduras;
     private ListView lv_consumibles;
     private List<String> nombre_armas;
     private List<String> nombre_armaduras;
     private List<String> nombre_consumibles;
+    private final ToolBar aux = new ToolBar();
     private String object_sel;
     static final String ARMAS = "Armas";
     static final String ARMADURAS = "Armaduras";
@@ -36,7 +42,7 @@ public class Inventario_Asentamiento extends AppCompatActivity {
         setContentView(R.layout.activity_inventario_asentamiento);
 
         String asentamiento = (String)SingletonMap.getInstance().get("asentamiento");
-        dbHelper = (DbHelper) SingletonMap.getInstance().get("dbh");
+        DbHelper dbHelper = (DbHelper) SingletonMap.getInstance().get("dbh");
 
         lv_armas = findViewById(R.id.LV_Armas);
         lv_armaduras = findViewById(R.id.LV_Armaduras);
@@ -63,6 +69,28 @@ public class Inventario_Asentamiento extends AppCompatActivity {
         lv_consumibles.setAdapter(arrayAdapter);
 
         seleccionar_Objeto();
+
+        Toolbar toolbar = findViewById(R.id.tr_toolbar);
+        setSupportActionBar(toolbar);
+        final ActionBar ab = getSupportActionBar();
+        ab.setDisplayShowHomeEnabled(false);
+        ab.setDisplayShowCustomEnabled(true);
+        ab.setDisplayShowTitleEnabled(true);
+        ab.setTitle(R.string.app_name);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.cIdioma: aux.cambiarIdioma(this); break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void seleccionar_Objeto(){

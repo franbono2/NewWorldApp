@@ -1,13 +1,19 @@
 package com.newworld.newworldapp;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.CalendarView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.newworld.newworldapp.db.DbHelper;
+import com.newworld.newworldapp.utils.ToolBar;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,23 +22,20 @@ import java.util.Locale;
 
 public class InfoEventoActivity extends AppCompatActivity {
 
-    private DbHelper dbHelper;
-    private TextView tv_nombreEvento, tv_tipo, tv_lugar;
-    private ImageView imagen;
-    private CalendarView calendario;
+    private final ToolBar aux = new ToolBar();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_evento);
 
-        dbHelper = (DbHelper) SingletonMap.getInstance().get("dbh");
+        DbHelper dbHelper = (DbHelper) SingletonMap.getInstance().get("dbh");
 
-        tv_nombreEvento = (TextView) findViewById(R.id.tv_nombreObjeto);
-        tv_tipo = (TextView) findViewById(R.id.tv_cantidad_value);
-        tv_lugar = (TextView) findViewById(R.id.tv_peso_value);
-        imagen = (ImageView) findViewById(R.id.imageView);
-        calendario = (CalendarView) findViewById(R.id.calendarView);
+        TextView tv_nombreEvento = (TextView) findViewById(R.id.tv_nombreObjeto);
+        TextView tv_tipo = (TextView) findViewById(R.id.tv_cantidad_value);
+        TextView tv_lugar = (TextView) findViewById(R.id.tv_peso_value);
+        ImageView imagen = (ImageView) findViewById(R.id.imageView);
+        CalendarView calendario = (CalendarView) findViewById(R.id.calendarView);
 
         String nombre,fecha,tipo,lugar;
         nombre = (String)SingletonMap.getInstance().get("evento");
@@ -56,5 +59,28 @@ public class InfoEventoActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+
+        Toolbar toolbar = findViewById(R.id.tr_toolbar);
+        setSupportActionBar(toolbar);
+        final ActionBar ab = getSupportActionBar();
+        ab.setDisplayShowHomeEnabled(false);
+        ab.setDisplayShowCustomEnabled(true);
+        ab.setDisplayShowTitleEnabled(true);
+        ab.setTitle(R.string.app_name);
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.cIdioma: aux.cambiarIdioma(this); break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

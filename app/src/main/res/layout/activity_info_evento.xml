@@ -7,6 +7,18 @@
     android:background="@drawable/background"
     tools:context=".InfoEventoActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tr_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/tv_nombreObjeto"
         android:layout_width="wrap_content"
@@ -88,15 +100,16 @@
         android:id="@+id/calendarView"
         android:layout_width="243dp"
         android:layout_height="301dp"
+        android:clickable="false"
+        android:dateTextAppearance="@style/CalenderViewDateCustomText"
+        android:theme="@style/CalenderViewCustom"
+        android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.72"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.837"
-        android:theme="@style/CalenderViewCustom"
-        android:dateTextAppearance="@style/CalenderViewDateCustomText"
-        android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"/>
+        app:layout_constraintVertical_bias="0.837" />
 
     <TextView
         android:id="@+id/tv_descripcion"

@@ -1,16 +1,22 @@
 package com.newworld.newworldapp;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.newworld.newworldapp.db.DbHelper;
+import com.newworld.newworldapp.utils.ToolBar;
 
 import java.util.List;
 
@@ -21,6 +27,8 @@ public class AsentamientoActivity extends AppCompatActivity {
     private String no_events;
     private String inventory_in;
     private String no_objects;
+    private final ToolBar aux = new ToolBar();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +46,28 @@ public class AsentamientoActivity extends AppCompatActivity {
 
         TextView textAsentamiento = (TextView) findViewById(R.id.textAsentamiento);
         textAsentamiento.setText(asentamiento);
+
+        Toolbar toolbar = findViewById(R.id.tr_toolbar);
+        setSupportActionBar(toolbar);
+        final ActionBar ab = getSupportActionBar();
+        ab.setDisplayShowHomeEnabled(false);
+        ab.setDisplayShowCustomEnabled(true);
+        ab.setDisplayShowTitleEnabled(true);
+        ab.setTitle(R.string.app_name);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.cIdioma: aux.cambiarIdioma(this); break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void clickB_Eventos (View view) {

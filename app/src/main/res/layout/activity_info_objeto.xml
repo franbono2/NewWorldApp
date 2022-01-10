@@ -7,6 +7,18 @@
     android:background="@drawable/background"
     tools:context=".InfoObjetoActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tr_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/tv_nombreObjeto"
         android:layout_width="wrap_content"
