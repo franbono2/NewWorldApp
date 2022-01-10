@@ -70,11 +70,80 @@ public class DbHelper extends SQLiteOpenHelper {
             " (8,200,170)," +
             " (9,220,130)," +
             " (10,210,100);";
-    private static final String INSERT_OBJETO = "INSERT INTO t_objeto VALUES (0,'Pocion de salud',20,2,'Consumible para aumentar la salud','Arcana, enemigos','consumibles',0)," +
-            " (1,'Abretormentas',1,10,'El sol asomó entre las nubes con la promesa de un futuro mejor','Enemigos','Armas', 0)," +
-            " (2,'Abrigo de aventurero',1,6,'Un abrigo bien pertrechado, te servira igual de bien que a su antigo dueño','Enemigos','Armaduras', 0)," +
-            " (3,'Pocion de mana',20,2,'Consumible para aumentar el mana','Arcana, enemigos','Consumibles',0)," +
-            " (4,'Racion ligera',20,2,'Consumible para activar la regeneracion de salud','Cocina, enemigos','Consumibles',0);";
+    private static final String INSERT_OBJETO = "INSERT INTO t_objeto (nombre,cantidad,peso,descripcion,origen,categoria,id_inventario)" +
+            "VALUES ('Abretormentas',1,10,'«El sol asomó entre las nubes con la promesa de un futuro mejor»','Enemigos','Armas', 0)," +
+            " ('Abrigo de aventurero',1,6,'Un abrigo bien pertrechado, te servira igual de bien que a su antigo dueño','Enemigos','Armaduras', 0)," +
+            " ('Abismo inmortal',1,3,'«Quienes caen dentro jamás escapan»','Enemigos','Armas', 1)," +
+            " ('Ablandador',1,5,'«Igual de efectivo con los enemigos que con la carne»','Enemigos','Armas', 2)," +
+            " ('Agonia',1,2,'«Al principio te dolerá. Y después te dolerá todavía más. Pero no hay nada que puedas hacer»','Enemigos','Armas', 3)," +
+            " ('Pecado',1,4,'«Purgaremos a los corruptos con nuestra furia justificada»','Enemigos','Armas', 4)," +
+            " ('Lanza omega',1,2,'Versión omega de la lanza','Enemigos','Armas', 5)," +
+            " ('Ocaso',1,1,'«Cuando la oscuridad alcanza su cénit, el vacío sonríe dichoso»','Enemigos','Armas', 6)," +
+            " ('Cierragrietas',1,12,'«¡Defiende nuestro asentamiento! ¡Cierra esa grieta!»','Enemigos','Armas', 7)," +
+            " ('Pacifista',1,3,'«No te deseo ningún mal. Apártate y nadie saldrá herido»','Enemigos','Armas', 8)," +
+            " ('Latido',1,4,'«Lo primero y último que oirás en la vida»','Enemigos','Armas', 9)," +
+            " ('Galanteria',1,4,'«Una espada para el valiente, el refinado, el más galante de nuestros caballeros»','Enemigos','Armas', 10)," +
+            " ('Sombrero totemico',1,2,'«Se piensa que los cuernos tenían un fin especial, pero nadie se acuerda de cuál era»','Enemigos','Armaduras', 0)," +
+            " ('Coraza sacrosanta',1,20,'Armadura concedida por vencer a uno de los hechizos más poderosos de los antiguos','Enemigos','Armaduras', 1)," +
+            " ('Grebas primitivas',1,12,'Una pieza de armadura que lleva algún tiempo en manos de los tierramarga','Enemigos','Armaduras', 1)," +
+            " ('Pendientes omega',1,1,'Versión omega de los pendientes','Enemigos','Armaduras', 7)," +
+            " ('Yelmo de inquisidor',1,3,'Armadura que llevan los que han jurado sacar a la luz las conspiraciones de disidentes y herejes','Enemigos','Armaduras', 4)," +
+
+            " ('Pocion de salud',30,2,'Consumible para aumentar la salud','Arcana, enemigos','consumibles',0)," +
+            " ('Pocion de salud',20,2,'Consumible para aumentar la salud','Arcana, enemigos','consumibles',1)," +
+            " ('Pocion de salud',10,2,'Consumible para aumentar la salud','Arcana, enemigos','consumibles',2)," +
+            " ('Pocion de salud',40,2,'Consumible para aumentar la salud','Arcana, enemigos','consumibles',3)," +
+            " ('Pocion de salud',17,2,'Consumible para aumentar la salud','Arcana, enemigos','consumibles',4)," +
+            " ('Pocion de salud',26,2,'Consumible para aumentar la salud','Arcana, enemigos','consumibles',5)," +
+            " ('Pocion de salud',54,2,'Consumible para aumentar la salud','Arcana, enemigos','consumibles',6)," +
+            " ('Pocion de salud',32,2,'Consumible para aumentar la salud','Arcana, enemigos','consumibles',7)," +
+            " ('Pocion de salud',33,2,'Consumible para aumentar la salud','Arcana, enemigos','consumibles',8)," +
+            " ('Pocion de salud',28,2,'Consumible para aumentar la salud','Arcana, enemigos','consumibles',9)," +
+            " ('Pocion de salud',14,2,'Consumible para aumentar la salud','Arcana, enemigos','consumibles',10)," +
+
+            " ('Pocion de mana',20,2,'Consumible para aumentar el mana','Arcana, enemigos','Consumibles',0)," +
+            " ('Pocion de mana',20,2,'Consumible para aumentar el mana','Arcana, enemigos','Consumibles',1)," +
+            " ('Pocion de mana',20,2,'Consumible para aumentar el mana','Arcana, enemigos','Consumibles',3)," +
+            " ('Pocion de mana',20,2,'Consumible para aumentar el mana','Arcana, enemigos','Consumibles',4)," +
+            " ('Pocion de mana',20,2,'Consumible para aumentar el mana','Arcana, enemigos','Consumibles',5)," +
+            " ('Pocion de mana',20,2,'Consumible para aumentar el mana','Arcana, enemigos','Consumibles',6)," +
+            " ('Pocion de mana',20,2,'Consumible para aumentar el mana','Arcana, enemigos','Consumibles',7)," +
+            " ('Pocion de mana',20,2,'Consumible para aumentar el mana','Arcana, enemigos','Consumibles',9)," +
+            " ('Pocion de mana',20,2,'Consumible para aumentar el mana','Arcana, enemigos','Consumibles',10)," +
+
+            " ('Racion ligera',20,2,'Consumible para activar la regeneracion de salud','Cocina, enemigos','Consumibles',0)," +
+            " ('Racion ligera',40,2,'Consumible para activar la regeneracion de salud','Cocina, enemigos','Consumibles',1)," +
+            " ('Racion ligera',30,2,'Consumible para activar la regeneracion de salud','Cocina, enemigos','Consumibles',2)," +
+            " ('Racion ligera',20,2,'Consumible para activar la regeneracion de salud','Cocina, enemigos','Consumibles',3)," +
+            " ('Racion ligera',10,2,'Consumible para activar la regeneracion de salud','Cocina, enemigos','Consumibles',4)," +
+            " ('Racion ligera',45,2,'Consumible para activar la regeneracion de salud','Cocina, enemigos','Consumibles',5)," +
+            " ('Racion ligera',32,2,'Consumible para activar la regeneracion de salud','Cocina, enemigos','Consumibles',6)," +
+            " ('Racion ligera',27,2,'Consumible para activar la regeneracion de salud','Cocina, enemigos','Consumibles',7)," +
+            " ('Racion ligera',15,2,'Consumible para activar la regeneracion de salud','Cocina, enemigos','Consumibles',8)," +
+            " ('Racion ligera',23,2,'Consumible para activar la regeneracion de salud','Cocina, enemigos','Consumibles',9)," +
+            " ('Racion ligera',29,2,'Consumible para activar la regeneracion de salud','Cocina, enemigos','Consumibles',10)," +
+
+            " ('Racion de viaje',10,3,'Consumible para aumentar considerablemente la regeneracion de salud','Cocina, enemigos','Consumibles',0)," +
+            " ('Racion de viaje',27,3,'Consumible para aumentar considerablemente la regeneracion de salud','Cocina, enemigos','Consumibles',1)," +
+            " ('Racion de viaje',56,3,'Consumible para aumentar considerablemente la regeneracion de salud','Cocina, enemigos','Consumibles',2)," +
+            " ('Racion de viaje',31,3,'Consumible para aumentar considerablemente la regeneracion de salud','Cocina, enemigos','Consumibles',3)," +
+            " ('Racion de viaje',19,3,'Consumible para aumentar considerablemente la regeneracion de salud','Cocina, enemigos','Consumibles',5)," +
+            " ('Racion de viaje',22,3,'Consumible para aumentar considerablemente la regeneracion de salud','Cocina, enemigos','Consumibles',7)," +
+            " ('Racion de viaje',28,3,'Consumible para aumentar considerablemente la regeneracion de salud','Cocina, enemigos','Consumibles',10)," +
+
+            " ('Agua',1,47,'Ingrediente de cocina. Se puede consumir, pero solo restaura una cantidad muy pequeña de salud. Los ingredientes son mucho más eficaces cuando se cocinan.','Masas de agua','Consumibles',0)," +
+            " ('Agua',1,47,'Ingrediente de cocina. Se puede consumir, pero solo restaura una cantidad muy pequeña de salud. Los ingredientes son mucho más eficaces cuando se cocinan.','Masas de agua','Materiales',0)," +
+            " ('Agua',1,30,'Ingrediente de cocina. Se puede consumir, pero solo restaura una cantidad muy pequeña de salud. Los ingredientes son mucho más eficaces cuando se cocinan.','Masas de agua','Consumibles',8)," +
+            " ('Agua',1,30,'Ingrediente de cocina. Se puede consumir, pero solo restaura una cantidad muy pequeña de salud. Los ingredientes son mucho más eficaces cuando se cocinan.','Masas de agua','Materiales',8)," +
+            " ('Agua',1,21,'Ingrediente de cocina. Se puede consumir, pero solo restaura una cantidad muy pequeña de salud. Los ingredientes son mucho más eficaces cuando se cocinan.','Masas de agua','Consumibles',4)," +
+            " ('Agua',1,21,'Ingrediente de cocina. Se puede consumir, pero solo restaura una cantidad muy pequeña de salud. Los ingredientes son mucho más eficaces cuando se cocinan.','Masas de agua','Materiales',4)," +
+
+            " ('Paella',5,6,'Aumenta la destreza y la concentración en 12 durante 30 minutos','Cocina, enemigos','Consumibles',0)," +
+            " ('Paella',7,6,'Aumenta la destreza y la concentración en 12 durante 30 minutos','Cocina, enemigos','Consumibles',3)," +
+            " ('Paella',2,6,'Aumenta la destreza y la concentración en 12 durante 30 minutos','Cocina, enemigos','Consumibles',6)," +
+            " ('Paella',4,6,'Aumenta la destreza y la concentración en 12 durante 30 minutos','Cocina, enemigos','Consumibles',9)" +
+
+            ";";
 
     private SQLiteDatabase db;
 
