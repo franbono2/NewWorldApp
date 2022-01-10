@@ -30,13 +30,18 @@
         android:text="@string/bienvenidos"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/white"
-        android:textSize="34sp"
+        android:textSize="38sp"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.002" />
+        app:layout_constraintVertical_bias="0.002"
+        android:textStyle="bold"
+        android:shadowColor="#000000"
+        android:shadowRadius="10"
+        android:shadowDx="2"
+        android:shadowDy="5"/>
 
     <TextView
         android:id="@+id/textView2"
@@ -46,13 +51,20 @@
         android:fontFamily="sans-serif-condensed-medium"
         android:text="@string/descripcion"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+
+        android:textStyle="bold"
+        android:shadowColor="#000000"
+        android:shadowRadius="10"
+        android:shadowDx="2"
+        android:shadowDy="5"
+        />
 
     <TextView
         android:id="@+id/textView3"
@@ -62,11 +74,17 @@
         android:layout_marginBottom="42dp"
         android:text="@string/entrar"
         android:textColor="@color/white"
+        android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.543" />
+        app:layout_constraintVertical_bias="0.543"
+        android:textStyle="bold"
+        android:shadowColor="#000000"
+        android:shadowRadius="10"
+        android:shadowDx="2"
+        android:shadowDy="5"/>
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tr_toolbar"

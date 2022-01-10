@@ -32,7 +32,12 @@
         app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.102" />
+        app:layout_constraintVertical_bias="0.102"
+        android:textColor="@color/white"
+        android:shadowColor="#000000"
+        android:shadowRadius="10"
+        android:shadowDx="2"
+        android:shadowDy="5"/>
 
     <ImageView
         android:id="@+id/imageView"
@@ -57,7 +62,12 @@
         app:layout_constraintHorizontal_bias="0.579"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_cantidad"
-        app:layout_constraintVertical_bias="0.07999998" />
+        app:layout_constraintVertical_bias="0.07999998"
+        android:textColor="@color/white"
+        android:shadowColor="#000000"
+        android:shadowRadius="10"
+        android:shadowDx="2"
+        android:shadowDy="5"/>
 
     <TextView
         android:id="@+id/tv_categoria"
@@ -69,7 +79,12 @@
         app:layout_constraintHorizontal_bias="0.536"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_peso"
-        app:layout_constraintVertical_bias="0.07999998" />
+        app:layout_constraintVertical_bias="0.07999998"
+        android:textColor="@color/white"
+        android:shadowColor="#000000"
+        android:shadowRadius="10"
+        android:shadowDx="2"
+        android:shadowDy="5"/>
 
     <TextView
         android:id="@+id/tv_categoria_value"
@@ -82,7 +97,12 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tv_categoria"
         app:layout_constraintTop_toBottomOf="@+id/tv_peso_value"
-        app:layout_constraintVertical_bias="0.07999998" />
+        app:layout_constraintVertical_bias="0.07999998"
+        android:textColor="@color/white"
+        android:shadowColor="#000000"
+        android:shadowRadius="10"
+        android:shadowDx="2"
+        android:shadowDy="5"/>
 
     <TextView
         android:id="@+id/tv_inventario"
@@ -94,7 +114,12 @@
         app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_origen"
-        app:layout_constraintVertical_bias="0.07999998" />
+        app:layout_constraintVertical_bias="0.07999998"
+        android:textColor="@color/white"
+        android:shadowColor="#000000"
+        android:shadowRadius="10"
+        android:shadowDx="2"
+        android:shadowDy="5"/>
 
     <TextView
         android:id="@+id/tv_cantidad"
@@ -107,7 +132,12 @@
         app:layout_constraintHorizontal_bias="0.621"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.238" />
+        app:layout_constraintVertical_bias="0.238"
+        android:textColor="@color/white"
+        android:shadowColor="#000000"
+        android:shadowRadius="10"
+        android:shadowDx="2"
+        android:shadowDy="5"/>
 
     <TextView
         android:id="@+id/tv_origen"
@@ -119,7 +149,12 @@
         app:layout_constraintHorizontal_bias="0.56"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_categoria"
-        app:layout_constraintVertical_bias="0.07999998" />
+        app:layout_constraintVertical_bias="0.07999998"
+        android:textColor="@color/white"
+        android:shadowColor="#000000"
+        android:shadowRadius="10"
+        android:shadowDx="2"
+        android:shadowDy="5"/>
 
     <TextView
         android:id="@+id/tv_inventario_value"
@@ -132,7 +167,12 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tv_inventario"
         app:layout_constraintTop_toBottomOf="@+id/tv_origen_value"
-        app:layout_constraintVertical_bias="0.07999998" />
+        app:layout_constraintVertical_bias="0.07999998"
+        android:textColor="@color/white"
+        android:shadowColor="#000000"
+        android:shadowRadius="10"
+        android:shadowDx="2"
+        android:shadowDy="5"/>
 
     <TextView
         android:id="@+id/tv_origen_value"
@@ -144,7 +184,12 @@
         app:layout_constraintHorizontal_bias="0.32"
         app:layout_constraintStart_toEndOf="@+id/tv_origen"
         app:layout_constraintTop_toBottomOf="@+id/tv_categoria_value"
-        app:layout_constraintVertical_bias="0.07999998" />
+        app:layout_constraintVertical_bias="0.07999998"
+        android:textColor="@color/white"
+        android:shadowColor="#000000"
+        android:shadowRadius="10"
+        android:shadowDx="2"
+        android:shadowDy="5"/>
 
     <TextView
         android:id="@+id/tv_cantidad_value"
@@ -157,7 +202,12 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tv_cantidad"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.238" />
+        app:layout_constraintVertical_bias="0.238"
+        android:textColor="@color/white"
+        android:shadowColor="#000000"
+        android:shadowRadius="10"
+        android:shadowDx="2"
+        android:shadowDy="5"/>
 
     <TextView
         android:id="@+id/tv_peso_value"
@@ -170,7 +220,12 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tv_peso"
         app:layout_constraintTop_toBottomOf="@+id/tv_cantidad_value"
-        app:layout_constraintVertical_bias="0.07999998" />
+        app:layout_constraintVertical_bias="0.07999998"
+        android:textColor="@color/white"
+        android:shadowColor="#000000"
+        android:shadowRadius="10"
+        android:shadowDx="2"
+        android:shadowDy="5"/>
 
     <TextView
         android:id="@+id/tv_descripcion"
@@ -182,7 +237,12 @@
         app:layout_constraintHorizontal_bias="0.158"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.639" />
+        app:layout_constraintVertical_bias="0.639"
+        android:textColor="@color/white"
+        android:shadowColor="#000000"
+        android:shadowRadius="10"
+        android:shadowDx="2"
+        android:shadowDy="5"/>
 
     <TextView
         android:id="@+id/tv_descripcion_value"
@@ -194,6 +254,11 @@
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_descripcion"
-        app:layout_constraintVertical_bias="0.072" />
+        app:layout_constraintVertical_bias="0.072"
+        android:textColor="@color/white"
+        android:shadowColor="#000000"
+        android:shadowRadius="10"
+        android:shadowDx="2"
+        android:shadowDy="5"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
