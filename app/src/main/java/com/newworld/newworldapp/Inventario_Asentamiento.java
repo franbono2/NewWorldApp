@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -61,19 +62,28 @@ public class Inventario_Asentamiento extends AppCompatActivity {
             nombre_armas = dbHelper.getNombreObjetosCategoria(asentamiento, ARMAS);
         }else {
             TextView tarmas = findViewById(R.id.TV_Armas);
-            tarmas.setText("");
+            ImageView imgArma = findViewById(R.id.IV_Arma);
+            tarmas.setVisibility(View.GONE);
+            lv_armas.setVisibility(View.GONE);
+            imgArma.setVisibility(View.GONE);
         }
         if(dbHelper.ObjectsIsNotEmpty(asentamiento, ARMADURAS)){
             nombre_armaduras = dbHelper.getNombreObjetosCategoria(asentamiento, ARMADURAS);
         }else{
             TextView tarmaduras = findViewById(R.id.TV_Armaduras);
-            tarmaduras.setText("");
+            ImageView imgArmadura = findViewById(R.id.IV_Armadura);
+            tarmaduras.setVisibility(View.GONE);
+            lv_armaduras.setVisibility(View.GONE);
+            imgArmadura.setVisibility(View.GONE);
         }
         if(dbHelper.ObjectsIsNotEmpty(asentamiento, CONSUMIBLES)){
             nombre_consumibles = dbHelper.getNombreObjetosCategoria(asentamiento, CONSUMIBLES);
         }else{
             TextView tconsumibles = findViewById(R.id.TV_Consumibles);
-            tconsumibles.setText("");
+            ImageView imgPoti = findViewById(R.id.IV_Poti);
+            tconsumibles.setVisibility(View.GONE);
+            lv_consumibles.setVisibility(View.GONE);
+            imgPoti.setVisibility(View.GONE);
         }
 
         ArrayAdapter<String> arrayAdapter;

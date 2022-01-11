@@ -67,45 +67,47 @@
             android:id="@+id/LV_Consumibles"
             android:layout_width="409dp"
             android:layout_height="380dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:scrollbars="vertical"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="5"
+            android:shadowRadius="10"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/TV_Consumibles"
-            android:textColor="@color/white"
-            android:shadowColor="#000000"
-            android:shadowRadius="10"
-            android:shadowDx="2"
-            android:shadowDy="5"/>
+            app:layout_constraintTop_toBottomOf="@+id/TV_Consumibles" />
 
         <ListView
             android:id="@+id/LV_Armas"
             android:layout_width="409dp"
             android:layout_height="150dp"
             android:layout_marginTop="13dp"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="5"
+            android:shadowRadius="10"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/TV_Armas"
-            android:textColor="@color/white"
-            android:shadowColor="#000000"
-            android:shadowRadius="10"
-            android:shadowDx="2"
-            android:shadowDy="5"/>
+            app:layout_constraintTop_toBottomOf="@+id/TV_Armas" />
 
         <ListView
             android:id="@+id/LV_Armaduras"
             android:layout_width="409dp"
             android:layout_height="150dp"
             android:layout_marginTop="16dp"
+            android:shadowColor="#000000"
+            android:shadowDx="2"
+            android:shadowDy="5"
+            android:shadowRadius="10"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/TV_Armaduras"
-            android:textColor="@color/white"
-            android:shadowColor="#000000"
-            android:shadowRadius="10"
-            android:shadowDx="2"
-            android:shadowDy="5"/>
+            app:layout_constraintTop_toBottomOf="@+id/TV_Armaduras">
+
+        </ListView>
 
         <TextView
             android:id="@+id/TV_Armas"
@@ -122,6 +124,16 @@
             android:shadowRadius="10"
             android:shadowDx="2"
             android:shadowDy="5"/>
+
+        <ImageView
+            android:id="@+id/IV_Armadura"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/LV_Armaduras"
+            app:layout_constraintStart_toEndOf="@+id/TV_Armaduras"
+            app:srcCompat="@drawable/armaduras" />
 
         <TextView
             android:id="@+id/TV_Inventario"
@@ -158,39 +170,23 @@
             android:shadowDy="5"/>
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/IV_Arma"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.692"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.163"
+            android:layout_marginStart="48dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/LV_Armas"
+            app:layout_constraintStart_toEndOf="@+id/TV_Armas"
             app:srcCompat="@drawable/armas" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/IV_Poti"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            app:layout_constraintBottom_toBottomOf="@+id/LV_Consumibles"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.692"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.471"
-            app:srcCompat="@drawable/armaduras" />
-
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.692"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.773"
+            android:layout_marginStart="48dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/LV_Consumibles"
+            app:layout_constraintStart_toEndOf="@+id/TV_Consumibles"
             app:srcCompat="@drawable/consumibles" />
 
 
