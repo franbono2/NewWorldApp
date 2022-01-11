@@ -27,6 +27,6 @@ public class ToolBar {
         app.finish();
         app.startActivity(app.getIntent());
         setAppLocale(country, app);
-        Toast.makeText(app.getApplicationContext(),toastText,Toast.LENGTH_LONG).show();
+        Toast.makeText(app.getApplicationContext(),toastText,Toast.LENGTH_SHORT).show();
     }
 }

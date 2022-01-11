@@ -78,21 +78,21 @@ public class AsentamientoActivity extends AppCompatActivity {
 
     public void clickB_Eventos (View view) {
         if(dbHelper.EventosIsNotEmpty(asentamiento)){
-            Toast.makeText(getApplicationContext(),events_in + " " + asentamiento,Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),events_in + " " + asentamiento,Toast.LENGTH_SHORT).show();
             Intent intento = new Intent(this, Eventos_Asentamiento.class);
             startActivity(intento);
         }else{
-            Toast.makeText(getApplicationContext(),no_events + " " + asentamiento,Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),no_events + " " + asentamiento,Toast.LENGTH_SHORT).show();
         }
     }
 
     public void clickB_Inventario (View view) {
         if(dbHelper.InventariosIsNotEmpty(asentamiento)){
-            Toast.makeText(getApplicationContext(),inventory_in + " " + asentamiento,Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),inventory_in + " " + asentamiento,Toast.LENGTH_SHORT).show();
             Intent intento = new Intent(this, Inventario_Asentamiento.class);
             startActivity(intento);
         }else{
-            Toast.makeText(getApplicationContext(),no_objects + " " + asentamiento,Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),no_objects + " " + asentamiento,Toast.LENGTH_SHORT).show();
         }
     }
 }

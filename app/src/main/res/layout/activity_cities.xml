@@ -22,15 +22,15 @@
         android:id="@+id/listview"
         android:layout_width="412dp"
         android:layout_height="731dp"
+        android:shadowColor="#000000"
+        android:shadowDx="2"
+        android:shadowDy="5"
+        android:shadowRadius="10"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tr_toolbar"
-        app:layout_constraintVertical_bias="0.0"
-        android:shadowColor="#000000"
-        android:shadowRadius="10"
-        android:shadowDx="2"
-        android:shadowDy="5"/>
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -104,7 +104,7 @@ public class Inventario_Asentamiento extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String seleccionado = nombre_armas.get(position);
-                Toast.makeText(getApplicationContext(),object_sel+ " " +seleccionado,Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),object_sel+ " " +seleccionado,Toast.LENGTH_SHORT).show();
                 SingletonMap.getInstance().put("objeto",seleccionado);
                 Intent intento = new Intent(getApplicationContext(), InfoObjetoActivity.class);
                 startActivity(intento);
@@ -115,7 +115,7 @@ public class Inventario_Asentamiento extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String seleccionado = nombre_armaduras.get(position);
-                Toast.makeText(getApplicationContext(),object_sel+ " "+seleccionado,Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),object_sel+ " "+seleccionado,Toast.LENGTH_SHORT).show();
                 SingletonMap.getInstance().put("objeto",seleccionado);
                 Intent intento = new Intent(getApplicationContext(), InfoObjetoActivity.class);
                 startActivity(intento);
@@ -126,7 +126,7 @@ public class Inventario_Asentamiento extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String seleccionado = nombre_consumibles.get(position);
-                Toast.makeText(getApplicationContext(),object_sel+ " " +seleccionado,Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),object_sel+ " " +seleccionado,Toast.LENGTH_SHORT).show();
                 SingletonMap.getInstance().put("objeto",seleccionado);
                 Intent intento = new Intent(getApplicationContext(), InfoObjetoActivity.class);
                 startActivity(intento);

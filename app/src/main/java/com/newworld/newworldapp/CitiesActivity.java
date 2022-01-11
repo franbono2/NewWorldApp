@@ -88,7 +88,7 @@ public class CitiesActivity extends AppCompatActivity {
                 String seleccionado = list.get(position);
                 Resources res = getResources();
                 String asent = res.getString(R.string.toast);
-                Toast.makeText(getApplicationContext(),asent + " " + seleccionado,Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),asent + " " + seleccionado,Toast.LENGTH_SHORT).show();
                 SingletonMap.getInstance().put("asentamiento",seleccionado);
                 Intent intento = new Intent(getApplicationContext(), AsentamientoActivity.class);
                 startActivity(intento);

@@ -79,7 +79,7 @@ public class Eventos_Asentamiento extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String seleccionado = nombreEventos.get(position);
-                Toast.makeText(getApplicationContext(),event_sel+ " " +seleccionado,Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),event_sel+ " " +seleccionado,Toast.LENGTH_SHORT).show();
                 SingletonMap.getInstance().put("evento",seleccionado);
                 Intent intento = new Intent(getApplicationContext(), InfoEventoActivity.class);
                 startActivity(intento);
