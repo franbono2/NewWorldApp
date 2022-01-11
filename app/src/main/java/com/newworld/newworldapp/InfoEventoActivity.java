@@ -32,8 +32,8 @@ public class InfoEventoActivity extends AppCompatActivity {
         DbHelper dbHelper = (DbHelper) SingletonMap.getInstance().get("dbh");
 
         TextView tv_nombreEvento = (TextView) findViewById(R.id.tv_nombreObjeto);
-        TextView tv_tipo = (TextView) findViewById(R.id.tv_cantidad_value);
-        TextView tv_lugar = (TextView) findViewById(R.id.tv_peso_value);
+        TextView tv_tipo = (TextView) findViewById(R.id.tv_tipo_value);
+        TextView tv_lugar = (TextView) findViewById(R.id.tv_lugar_value);
         ImageView imagen = (ImageView) findViewById(R.id.imageView);
         CalendarView calendario = (CalendarView) findViewById(R.id.calendarView);
 

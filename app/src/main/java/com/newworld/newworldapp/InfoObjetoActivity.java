@@ -8,7 +8,6 @@ import androidx.appcompat.widget.Toolbar;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.CalendarView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,8 +28,8 @@ public class InfoObjetoActivity extends AppCompatActivity {
         DbHelper dbHelper = (DbHelper) SingletonMap.getInstance().get("dbh");
 
         TextView tv_nombreObjeto = (TextView) findViewById(R.id.tv_nombreObjeto);
-        TextView tv_cantidad = (TextView) findViewById(R.id.tv_cantidad_value);
-        TextView tv_peso = (TextView) findViewById(R.id.tv_peso_value);
+        TextView tv_cantidad = (TextView) findViewById(R.id.tv_tipo_value);
+        TextView tv_peso = (TextView) findViewById(R.id.tv_lugar_value);
         TextView tv_descripcion = (TextView) findViewById(R.id.tv_descripcion_value);
         TextView tv_origen = (TextView) findViewById(R.id.tv_origen_value);
         TextView tv_categoria = (TextView) findViewById(R.id.tv_categoria_value);
