@@ -45,8 +45,43 @@ public class DbHelper extends SQLiteOpenHelper {
             "id_inventario INTEGER," +
             "FOREIGN KEY(id_inventario) REFERENCES t_inventario(id))";
 
-    private static final String INSERT_EVENTO = "INSERT INTO t_evento VALUES (0,'Invasión en Aguas Fétidas','Invasion','27/11/2021',0)," +
-            " (1,'Guerra en Aguas Fétidas','Guerra','27/11/2021',0);";
+    private static final String INSERT_EVENTO = "INSERT INTO t_evento (nombre,tipo,fecha,id_asentamiento) " +
+            "VALUES ('Invasión de corruptos 1','Invasion','26/11/2021',0)," +
+            "('Invasión de corruptos 2','Invasion','30/11/2021',1)," +
+            "('Invasión de corruptos 3','Invasion','04/12/2021',4)," +
+            "('Invasión de corruptos 4','Invasion','02/12/2021',6)," +
+            "('Invasión de corruptos 5','Invasion','15/12/2021',7)," +
+            "('Invasión de corruptos 6','Invasion','22/12/2021',9)," +
+            "('Invasión de corruptos 7','Invasion','10/01/2022',10)," +
+
+            " ('Conquista del fuerte 1','Guerra','28/11/2021',0)," +
+            " ('Conquista del fuerte 2','Guerra','01/12/2021',2)," +
+            " ('Conquista del fuerte 3','Guerra','12/12/2021',3)," +
+            " ('Conquista del fuerte 4','Guerra','19/12/2021',5)," +
+            " ('Conquista del fuerte 5','Guerra','25/12/2021',8)," +
+            " ('Conquista del fuerte 6','Guerra','07/01/2022',1)," +
+            " ('Conquista del fuerte 7','Guerra','02/01/2022',10)," +
+
+            " ('Guerra de facciones 1','Guerra','27/11/2021',0)," +
+            " ('Guerra de facciones 2','Guerra','02/12/2021',0)," +
+            " ('Guerra de facciones 3','Guerra','14/12/2021',0)," +
+            " ('Guerra de facciones 4','Guerra','02/12/2021',1)," +
+            " ('Guerra de facciones 5','Guerra','11/12/2021',1)," +
+            " ('Guerra de facciones 6','Guerra','21/12/2021',2)," +
+            " ('Guerra de facciones 7','Guerra','07/12/2021',3)," +
+            " ('Guerra de facciones 8','Guerra','09/12/2021',4)," +
+            " ('Guerra de facciones 9','Guerra','18/12/2021',5)," +
+            " ('Guerra de facciones 10','Guerra','23/12/2021',6)," +
+            " ('Guerra de facciones 11','Guerra','22/12/2021',7)," +
+            " ('Guerra de facciones 12','Guerra','28/12/2021',8)," +
+            " ('Guerra de facciones 13','Guerra','03/12/2021',9)," +
+            " ('Guerra de facciones 14','Guerra','26/12/2021',10)," +
+            " ('Guerra de facciones 15','Guerra','02/01/2022',3)," +
+            " ('Guerra de facciones 16','Guerra','03/01/2022',6)," +
+            " ('Guerra de facciones 17','Guerra','04/01/2022',8)," +
+            " ('Guerra de facciones 18','Guerra','05/01/2022',5)," +
+            " ('Guerra de facciones 19','Guerra','07/01/2022',6)," +
+            " ('Guerra de facciones 20','Guerra','10/01/2022',8);";
 
     private static final String INSERT_ASENTAMIENTO = "INSERT INTO t_asentamiento VALUES (0,'Aguas Fétidas','pueblo',1,0)," +
             " (1,'Bosque Luminoso','ciudad',1,1)," +
@@ -59,22 +94,89 @@ public class DbHelper extends SQLiteOpenHelper {
             " (8,'Primera Luz','pueblo',1,8)," +
             " (9,'Riscos del Monarca','aldea',1,9)," +
             " (10,'Valle del Pesar','ciudad',1,10);";
-    private static final String INSERT_INVENTARIO = "INSERT INTO t_inventario VALUES (0,200,150)," +
-            " (1,250,100)," +
-            " (2,220,175)," +
-            " (3,270,140)," +
-            " (4,290,200)," +
-            " (5,300,150)," +
-            " (6,180,60)," +
-            " (7,190,110)," +
-            " (8,200,170)," +
-            " (9,220,130)," +
-            " (10,210,100);";
-    private static final String INSERT_OBJETO = "INSERT INTO t_objeto VALUES (0,'Poción de curación',20,2,'Consumible para aumentar la salud','Arcana, enemigos','consumibles',0)," +
-            " (1,'Golpe Abisal',1,10,'Un arama de luz y justicia tranformada en malicia','Enemigos','armas', 0)," +
-            " (2,'Abrigo del aventurero',1,6,'Un abrigo bien pertrechado, te servira igual de bien que a su antigo dueño','Enemigos','armaduras', 0)," +
-            " (3,'Poción de mana',20,2,'Consumible para aumentar el mana','Arcana, enemigos','consumibles',0)," +
-            " (4,'Ración ligera',20,2,'Consumible para activar la regeneracion de salud','Arcana, enemigos','consumibles',0);";
+    private static final String INSERT_INVENTARIO = "INSERT INTO t_inventario VALUES (0,800,265)," +
+            " (1,800,306)," +
+            " (2,800,144)," +
+            " (3,800,297)," +
+            " (4,1000,122)," +
+            " (5,1000,241)," +
+            " (6,800,225)," +
+            " (7,800,237)," +
+            " (8,800,129)," +
+            " (9,1100,170)," +
+            " (10,800,214);";
+    private static final String INSERT_OBJETO = "INSERT INTO t_objeto (nombre,cantidad,peso,descripcion,origen,categoria,id_inventario)" +
+            "VALUES ('Abretormentas',1,10,'«El sol asomó entre las nubes con la promesa de un futuro mejor»','Enemigos','Armas', 0)," +
+            " ('Abrigo de aventurero',1,6,'Un abrigo bien pertrechado, te servira igual de bien que a su antigo dueño','Enemigos','Armaduras', 0)," +
+            " ('Abismo inmortal',1,3,'«Quienes caen dentro jamás escapan»','Enemigos','Armas', 1)," +
+            " ('Ablandador',1,5,'«Igual de efectivo con los enemigos que con la carne»','Enemigos','Armas', 2)," +
+            " ('Agonia',1,2,'«Al principio te dolerá. Y después te dolerá todavía más. Pero no hay nada que puedas hacer»','Enemigos','Armas', 3)," +
+            " ('Pecado',1,4,'«Purgaremos a los corruptos con nuestra furia justificada»','Enemigos','Armas', 4)," +
+            " ('Lanza omega',1,2,'Versión omega de la lanza','Enemigos','Armas', 5)," +
+            " ('Ocaso',1,1,'«Cuando la oscuridad alcanza su cénit, el vacío sonríe dichoso»','Enemigos','Armas', 6)," +
+            " ('Cierragrietas',1,12,'«¡Defiende nuestro asentamiento! ¡Cierra esa grieta!»','Enemigos','Armas', 7)," +
+            " ('Pacifista',1,3,'«No te deseo ningún mal. Apártate y nadie saldrá herido»','Enemigos','Armas', 8)," +
+            " ('Latido',1,4,'«Lo primero y último que oirás en la vida»','Enemigos','Armas', 9)," +
+            " ('Galanteria',1,4,'«Una espada para el valiente, el refinado, el más galante de nuestros caballeros»','Enemigos','Armas', 10)," +
+            " ('Sombrero totemico',1,2,'«Se piensa que los cuernos tenían un fin especial, pero nadie se acuerda de cuál era»','Enemigos','Armaduras', 0)," +
+            " ('Coraza sacrosanta',1,20,'Armadura concedida por vencer a uno de los hechizos más poderosos de los antiguos','Enemigos','Armaduras', 1)," +
+            " ('Grebas primitivas',1,12,'Una pieza de armadura que lleva algún tiempo en manos de los tierramarga','Enemigos','Armaduras', 1)," +
+            " ('Pendientes omega',1,1,'Versión omega de los pendientes','Enemigos','Armaduras', 7)," +
+            " ('Yelmo de inquisidor',1,3,'Armadura que llevan los que han jurado sacar a la luz las conspiraciones de disidentes y herejes','Enemigos','Armaduras', 4)," +
+
+            " ('Pocion de salud',30,2,'Consumible para aumentar la salud','Arcana, enemigos','consumibles',0)," +
+            " ('Pocion de salud',20,2,'Consumible para aumentar la salud','Arcana, enemigos','consumibles',1)," +
+            " ('Pocion de salud',10,2,'Consumible para aumentar la salud','Arcana, enemigos','consumibles',2)," +
+            " ('Pocion de salud',40,2,'Consumible para aumentar la salud','Arcana, enemigos','consumibles',3)," +
+            " ('Pocion de salud',17,2,'Consumible para aumentar la salud','Arcana, enemigos','consumibles',4)," +
+            " ('Pocion de salud',26,2,'Consumible para aumentar la salud','Arcana, enemigos','consumibles',5)," +
+            " ('Pocion de salud',54,2,'Consumible para aumentar la salud','Arcana, enemigos','consumibles',6)," +
+            " ('Pocion de salud',32,2,'Consumible para aumentar la salud','Arcana, enemigos','consumibles',7)," +
+            " ('Pocion de salud',33,2,'Consumible para aumentar la salud','Arcana, enemigos','consumibles',8)," +
+            " ('Pocion de salud',28,2,'Consumible para aumentar la salud','Arcana, enemigos','consumibles',9)," +
+            " ('Pocion de salud',14,2,'Consumible para aumentar la salud','Arcana, enemigos','consumibles',10)," +
+
+            " ('Pocion de mana',20,2,'Consumible para aumentar el mana','Arcana, enemigos','Consumibles',0)," +
+            " ('Pocion de mana',20,2,'Consumible para aumentar el mana','Arcana, enemigos','Consumibles',1)," +
+            " ('Pocion de mana',20,2,'Consumible para aumentar el mana','Arcana, enemigos','Consumibles',3)," +
+            " ('Pocion de mana',20,2,'Consumible para aumentar el mana','Arcana, enemigos','Consumibles',4)," +
+            " ('Pocion de mana',20,2,'Consumible para aumentar el mana','Arcana, enemigos','Consumibles',5)," +
+            " ('Pocion de mana',20,2,'Consumible para aumentar el mana','Arcana, enemigos','Consumibles',6)," +
+            " ('Pocion de mana',20,2,'Consumible para aumentar el mana','Arcana, enemigos','Consumibles',7)," +
+            " ('Pocion de mana',20,2,'Consumible para aumentar el mana','Arcana, enemigos','Consumibles',9)," +
+            " ('Pocion de mana',20,2,'Consumible para aumentar el mana','Arcana, enemigos','Consumibles',10)," +
+
+            " ('Racion ligera',20,2,'Consumible para activar la regeneracion de salud','Cocina, enemigos','Consumibles',0)," +
+            " ('Racion ligera',40,2,'Consumible para activar la regeneracion de salud','Cocina, enemigos','Consumibles',1)," +
+            " ('Racion ligera',30,2,'Consumible para activar la regeneracion de salud','Cocina, enemigos','Consumibles',2)," +
+            " ('Racion ligera',20,2,'Consumible para activar la regeneracion de salud','Cocina, enemigos','Consumibles',3)," +
+            " ('Racion ligera',10,2,'Consumible para activar la regeneracion de salud','Cocina, enemigos','Consumibles',4)," +
+            " ('Racion ligera',45,2,'Consumible para activar la regeneracion de salud','Cocina, enemigos','Consumibles',5)," +
+            " ('Racion ligera',32,2,'Consumible para activar la regeneracion de salud','Cocina, enemigos','Consumibles',6)," +
+            " ('Racion ligera',27,2,'Consumible para activar la regeneracion de salud','Cocina, enemigos','Consumibles',7)," +
+            " ('Racion ligera',15,2,'Consumible para activar la regeneracion de salud','Cocina, enemigos','Consumibles',8)," +
+            " ('Racion ligera',23,2,'Consumible para activar la regeneracion de salud','Cocina, enemigos','Consumibles',9)," +
+            " ('Racion ligera',29,2,'Consumible para activar la regeneracion de salud','Cocina, enemigos','Consumibles',10)," +
+
+            " ('Racion de viaje',10,3,'Consumible para aumentar considerablemente la regeneracion de salud','Cocina, enemigos','Consumibles',0)," +
+            " ('Racion de viaje',27,3,'Consumible para aumentar considerablemente la regeneracion de salud','Cocina, enemigos','Consumibles',1)," +
+            " ('Racion de viaje',56,3,'Consumible para aumentar considerablemente la regeneracion de salud','Cocina, enemigos','Consumibles',2)," +
+            " ('Racion de viaje',31,3,'Consumible para aumentar considerablemente la regeneracion de salud','Cocina, enemigos','Consumibles',3)," +
+            " ('Racion de viaje',19,3,'Consumible para aumentar considerablemente la regeneracion de salud','Cocina, enemigos','Consumibles',5)," +
+            " ('Racion de viaje',22,3,'Consumible para aumentar considerablemente la regeneracion de salud','Cocina, enemigos','Consumibles',7)," +
+            " ('Racion de viaje',28,3,'Consumible para aumentar considerablemente la regeneracion de salud','Cocina, enemigos','Consumibles',10)," +
+
+            " ('Agua',1,47,'Ingrediente de cocina. Se puede consumir, pero solo restaura una cantidad muy pequeña de salud. Los ingredientes son mucho más eficaces cuando se cocinan.','Masas de agua','Consumibles',0)," +
+            " ('Agua',1,30,'Ingrediente de cocina. Se puede consumir, pero solo restaura una cantidad muy pequeña de salud. Los ingredientes son mucho más eficaces cuando se cocinan.','Masas de agua','Consumibles',8)," +
+            " ('Agua',1,21,'Ingrediente de cocina. Se puede consumir, pero solo restaura una cantidad muy pequeña de salud. Los ingredientes son mucho más eficaces cuando se cocinan.','Masas de agua','Consumibles',4)," +
+
+
+            " ('Paella',5,6,'Aumenta la destreza y la concentración en 12 durante 30 minutos','Cocina, enemigos','Consumibles',0)," +
+            " ('Paella',7,6,'Aumenta la destreza y la concentración en 12 durante 30 minutos','Cocina, enemigos','Consumibles',3)," +
+            " ('Paella',2,6,'Aumenta la destreza y la concentración en 12 durante 30 minutos','Cocina, enemigos','Consumibles',6)," +
+            " ('Paella',4,6,'Aumenta la destreza y la concentración en 12 durante 30 minutos','Cocina, enemigos','Consumibles',9)" +
+
+            ";";
 
     private SQLiteDatabase db;
 
@@ -84,6 +186,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         db.execSQL(TABLE_EVENTO);
         db.execSQL(TABLE_ASENTAMIENTO);
         db.execSQL(TABLE_INVENTARIO);
@@ -208,7 +311,7 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
 
-    //devuelve tipo, fecha, id_asentamiento
+    //devuelve tipo, fecha, id_asentamiento de un evento
     public List<String> getAtrEvento(String nombre) {
         List<String> res = new ArrayList<>();
         openDB();
@@ -221,6 +324,29 @@ public class DbHelper extends SQLiteOpenHelper {
                 res.add(c.getString(0));
                 res.add(c.getString(1));
                 res.add(c.getString(2));
+            }
+        }
+        closeDB();
+        return res;
+    }
+
+    //devuelve cantidad, peso, descripocion, origen, categoria, id_inventario de un objeto
+    public List<String> getAtrObjeto(String nombre) {
+        List<String> res = new ArrayList<>();
+        openDB();
+        db = getReadableDatabase();
+        if (db != null) {
+            String[] selectionArgs = {nombre};
+            Cursor c = db.rawQuery("SELECT cantidad, peso, descripcion, origen, categoria, id_inventario " +
+                    "FROM t_objeto WHERE nombre = ?", selectionArgs);
+            if (c != null) {
+                c.moveToFirst();
+                res.add(c.getString(0));
+                res.add(c.getString(1));
+                res.add(c.getString(2));
+                res.add(c.getString(3));
+                res.add(c.getString(4));
+                res.add(c.getString(5));
             }
         }
         closeDB();
@@ -259,12 +385,12 @@ public class DbHelper extends SQLiteOpenHelper {
         return capacidad;
     }
 
-    public List<String> getNombreObjetosCategoria(String asentamiento, String armas) {
+    public List<String> getNombreObjetosCategoria(String asentamiento, String categoria) {
         List<String> list = new ArrayList<>();
         openDB();
         db = getReadableDatabase();
         if(db != null){
-            String[] selectionArgs = {asentamiento, armas};
+            String[] selectionArgs = {asentamiento, categoria};
             Cursor c = db.rawQuery("SELECT t_objeto.nombre FROM t_objeto INNER JOIN t_inventario ON t_objeto.id_inventario = t_inventario.id INNER JOIN t_asentamiento ON t_inventario.id = t_asentamiento.id_inventario WHERE t_asentamiento.nombre = ? AND t_objeto.categoria = ?", selectionArgs);
             if(c != null){
                 c.moveToFirst();
@@ -277,5 +403,35 @@ public class DbHelper extends SQLiteOpenHelper {
         closeDB();
         return list;
 
+    }
+
+    public boolean InventariosIsNotEmpty(String asentamiento) {
+        boolean exist = false;
+        openDB();
+        db = getReadableDatabase();
+        if(db != null){
+            String[] selectionArgs = {asentamiento};
+            Cursor c = db.rawQuery("SELECT t_objeto.nombre FROM t_objeto INNER JOIN t_inventario ON t_objeto.id_inventario = t_inventario.id INNER JOIN t_asentamiento ON t_inventario.id = t_asentamiento.id_inventario WHERE t_asentamiento.nombre = ?", selectionArgs);
+            if(c != null){
+                exist = c.moveToFirst();
+            }
+        }
+        closeDB();
+        return exist;
+    }
+
+    public boolean ObjectsIsNotEmpty(String asentamiento, String categoria) {
+        boolean exist = false;
+        openDB();
+        db = getReadableDatabase();
+        if(db != null){
+            String[] selectionArgs = {asentamiento, categoria};
+            Cursor c = db.rawQuery("SELECT t_objeto.nombre FROM t_objeto INNER JOIN t_inventario ON t_objeto.id_inventario = t_inventario.id INNER JOIN t_asentamiento ON t_inventario.id = t_asentamiento.id_inventario WHERE t_asentamiento.nombre = ? AND t_objeto.categoria = ?", selectionArgs);
+            if(c != null){
+                exist = c.moveToFirst();
+            }
+        }
+        closeDB();
+        return exist;
     }
 }

@@ -1,0 +1,43 @@
+<resources>
+    <!-- activity_main strings -->
+    <string name="ciudad">Cities</string>
+    <string name="bienvenidos">Welcome to new world</string>
+    <string name="descripcion">With this app you will obtain information about the resources that you have stored in the different settlements and their respective description, as well as the next events that will take place in each city</string>
+    <string name="entrar">Enter Aeternum</string>
+    <string name="alerta">Do you want to enter Aeternum?</string>
+    <string name="postitiva">Yes</string>
+    <string name="negativa">No</string>
+
+    <!-- CitiesActivity strings -->
+    <string name="toast">Selected settlement: </string>
+
+    <!-- activity_asentamiento -->
+    <string name="inventario" >Inventory</string>
+    <string name="eventos" >Events</string>
+    <string name="eventos_in_yes" >Events in:</string>
+    <string name="eventos_in_no" >There are no events currently in:</string>
+    <string name="objects_yes" >Inventory of:</string>
+    <string name="objects_no" >There are no objects currently in:</string>
+
+    <!-- activity_inventario -->
+    <string name="consumibles">Consumables</string>
+    <string name="armaduras">Armors</string>
+    <string name="armas">Weapons</string>
+    <string name="object_sel">Selected object:</string>
+
+    <!-- activity_info_objeto -->
+    <string name="peso">Weight:</string>
+    <string name="categoria">Category:</string>
+    <string name="cantidad">Amount:</string>
+    <string name="origen">Source:</string>
+    <string name="desc">Description:</string>
+
+    <!-- activity_eventos -->
+    <string name="event_sel">Selected event:</string>
+
+    <!-- activity_info_evento -->
+    <string name="tipo">Type:</string>
+    <string name="lugar">Place:</string>
+    <string name="fecha">Date:</string>
+
+</resources>

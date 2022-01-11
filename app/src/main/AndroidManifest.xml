@@ -8,12 +8,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.NewWorldApp">
+        android:theme="@style/Theme.Design.NoActionBar">
+        <!-- android:theme="@style/Theme.NewWorldApp" -->
         <activity
-
+            android:name=".InfoObjetoActivity"
+            android:exported="false" />
+        <activity
             android:name=".InfoEventoActivity"
             android:exported="false" />
-
         <activity
             android:name=".Inventario_Asentamiento"
             android:exported="false" />
