@@ -66,10 +66,11 @@
         <ListView
             android:id="@+id/LV_Consumibles"
             android:layout_width="409dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="380dp"
+            android:layout_marginTop="16dp"
             android:scrollbars="vertical"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/TV_Consumibles"
             android:textColor="@color/white"

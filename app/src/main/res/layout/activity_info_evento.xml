@@ -127,6 +127,7 @@
         android:layout_height="301dp"
         android:clickable="false"
         android:dateTextAppearance="@style/CalenderViewDateCustomText"
+        android:saveEnabled="false"
         android:theme="@style/CalenderViewCustom"
         android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"
         app:layout_constraintBottom_toBottomOf="parent"

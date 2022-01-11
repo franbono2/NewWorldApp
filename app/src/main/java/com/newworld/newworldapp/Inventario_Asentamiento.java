@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.newworld.newworldapp.db.DbHelper;
 import com.newworld.newworldapp.utils.ToolBar;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Inventario_Asentamiento extends AppCompatActivity {
@@ -27,9 +28,9 @@ public class Inventario_Asentamiento extends AppCompatActivity {
     private ListView lv_armas;
     private ListView lv_armaduras;
     private ListView lv_consumibles;
-    private List<String> nombre_armas;
-    private List<String> nombre_armaduras;
-    private List<String> nombre_consumibles;
+    private List<String> nombre_armas = new LinkedList<>();
+    private List<String> nombre_armaduras = new LinkedList<>();
+    private List<String> nombre_consumibles = new LinkedList<>();
     private final ToolBar aux = new ToolBar();
     private String object_sel;
     static final String ARMAS = "Armas";
@@ -56,9 +57,24 @@ public class Inventario_Asentamiento extends AppCompatActivity {
         Resources res = getResources();
         object_sel = res.getString(R.string.object_sel);
 
-        nombre_armas = dbHelper.getNombreObjetosCategoria(asentamiento, ARMAS);
-        nombre_armaduras = dbHelper.getNombreObjetosCategoria(asentamiento, ARMADURAS);
-        nombre_consumibles = dbHelper.getNombreObjetosCategoria(asentamiento, CONSUMIBLES);
+        if(dbHelper.ObjectsIsNotEmpty(asentamiento, ARMAS)){
+            nombre_armas = dbHelper.getNombreObjetosCategoria(asentamiento, ARMAS);
+        }else {
+            TextView tarmas = findViewById(R.id.TV_Armas);
+            tarmas.setText("");
+        }
+        if(dbHelper.ObjectsIsNotEmpty(asentamiento, ARMADURAS)){
+            nombre_armaduras = dbHelper.getNombreObjetosCategoria(asentamiento, ARMADURAS);
+        }else{
+            TextView tarmaduras = findViewById(R.id.TV_Armaduras);
+            tarmaduras.setText("");
+        }
+        if(dbHelper.ObjectsIsNotEmpty(asentamiento, CONSUMIBLES)){
+            nombre_consumibles = dbHelper.getNombreObjetosCategoria(asentamiento, CONSUMIBLES);
+        }else{
+            TextView tconsumibles = findViewById(R.id.TV_Consumibles);
+            tconsumibles.setText("");
+        }
 
         ArrayAdapter<String> arrayAdapter;
         arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nombre_armas);
