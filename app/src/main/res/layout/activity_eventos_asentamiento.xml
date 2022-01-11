@@ -20,8 +20,8 @@
 
     <ListView
         android:id="@+id/LV_EventosAsentmiento"
-        android:layout_width="419dp"
-        android:layout_height="678dp"
+        android:layout_width="match_parent"
+        android:layout_height="740dp"
         android:background="@drawable/back4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
