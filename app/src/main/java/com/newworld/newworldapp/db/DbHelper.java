@@ -59,17 +59,17 @@ public class DbHelper extends SQLiteOpenHelper {
             " (8,'Primera Luz','pueblo',1,8)," +
             " (9,'Riscos del Monarca','aldea',1,9)," +
             " (10,'Valle del Pesar','ciudad',1,10);";
-    private static final String INSERT_INVENTARIO = "INSERT INTO t_inventario VALUES (0,200,150)," +
-            " (1,250,100)," +
-            " (2,220,175)," +
-            " (3,270,140)," +
-            " (4,290,200)," +
-            " (5,300,150)," +
-            " (6,180,60)," +
-            " (7,190,110)," +
-            " (8,200,170)," +
-            " (9,220,130)," +
-            " (10,210,100);";
+    private static final String INSERT_INVENTARIO = "INSERT INTO t_inventario VALUES (0,800,265)," +
+            " (1,800,306)," +
+            " (2,800,144)," +
+            " (3,800,297)," +
+            " (4,1000,122)," +
+            " (5,1000,241)," +
+            " (6,800,225)," +
+            " (7,800,237)," +
+            " (8,800,129)," +
+            " (9,1100,170)," +
+            " (10,800,214);";
     private static final String INSERT_OBJETO = "INSERT INTO t_objeto (nombre,cantidad,peso,descripcion,origen,categoria,id_inventario)" +
             "VALUES ('Abretormentas',1,10,'«El sol asomó entre las nubes con la promesa de un futuro mejor»','Enemigos','Armas', 0)," +
             " ('Abrigo de aventurero',1,6,'Un abrigo bien pertrechado, te servira igual de bien que a su antigo dueño','Enemigos','Armaduras', 0)," +
@@ -132,11 +132,9 @@ public class DbHelper extends SQLiteOpenHelper {
             " ('Racion de viaje',28,3,'Consumible para aumentar considerablemente la regeneracion de salud','Cocina, enemigos','Consumibles',10)," +
 
             " ('Agua',1,47,'Ingrediente de cocina. Se puede consumir, pero solo restaura una cantidad muy pequeña de salud. Los ingredientes son mucho más eficaces cuando se cocinan.','Masas de agua','Consumibles',0)," +
-            " ('Agua',1,47,'Ingrediente de cocina. Se puede consumir, pero solo restaura una cantidad muy pequeña de salud. Los ingredientes son mucho más eficaces cuando se cocinan.','Masas de agua','Materiales',0)," +
             " ('Agua',1,30,'Ingrediente de cocina. Se puede consumir, pero solo restaura una cantidad muy pequeña de salud. Los ingredientes son mucho más eficaces cuando se cocinan.','Masas de agua','Consumibles',8)," +
-            " ('Agua',1,30,'Ingrediente de cocina. Se puede consumir, pero solo restaura una cantidad muy pequeña de salud. Los ingredientes son mucho más eficaces cuando se cocinan.','Masas de agua','Materiales',8)," +
             " ('Agua',1,21,'Ingrediente de cocina. Se puede consumir, pero solo restaura una cantidad muy pequeña de salud. Los ingredientes son mucho más eficaces cuando se cocinan.','Masas de agua','Consumibles',4)," +
-            " ('Agua',1,21,'Ingrediente de cocina. Se puede consumir, pero solo restaura una cantidad muy pequeña de salud. Los ingredientes son mucho más eficaces cuando se cocinan.','Masas de agua','Materiales',4)," +
+
 
             " ('Paella',5,6,'Aumenta la destreza y la concentración en 12 durante 30 minutos','Cocina, enemigos','Consumibles',0)," +
             " ('Paella',7,6,'Aumenta la destreza y la concentración en 12 durante 30 minutos','Cocina, enemigos','Consumibles',3)," +
