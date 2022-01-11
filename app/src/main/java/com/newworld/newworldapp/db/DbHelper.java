@@ -45,8 +45,43 @@ public class DbHelper extends SQLiteOpenHelper {
             "id_inventario INTEGER," +
             "FOREIGN KEY(id_inventario) REFERENCES t_inventario(id))";
 
-    private static final String INSERT_EVENTO = "INSERT INTO t_evento VALUES (0,'Invasión en Aguas Fétidas','Invasion','27/11/2021',0)," +
-            " (1,'Guerra en Aguas Fétidas','Guerra','27/11/2021',0);";
+    private static final String INSERT_EVENTO = "INSERT INTO t_evento (nombre,tipo,fecha,id_asentamiento) " +
+            "VALUES ('Invasión de corruptos 1','Invasion','26/11/2021',0)," +
+            "('Invasión de corruptos 2','Invasion','30/11/2021',1)," +
+            "('Invasión de corruptos 3','Invasion','04/12/2021',4)," +
+            "('Invasión de corruptos 4','Invasion','02/12/2021',6)," +
+            "('Invasión de corruptos 5','Invasion','15/12/2021',7)," +
+            "('Invasión de corruptos 6','Invasion','22/12/2021',9)," +
+            "('Invasión de corruptos 7','Invasion','10/01/2022',10)," +
+
+            " ('Conquista del fuerte 1','Guerra','28/11/2021',0)," +
+            " ('Conquista del fuerte 2','Guerra','01/12/2021',2)," +
+            " ('Conquista del fuerte 3','Guerra','12/12/2021',3)," +
+            " ('Conquista del fuerte 4','Guerra','19/12/2021',5)," +
+            " ('Conquista del fuerte 5','Guerra','25/12/2021',8)," +
+            " ('Conquista del fuerte 6','Guerra','07/01/2022',1)," +
+            " ('Conquista del fuerte 7','Guerra','02/01/2022',10)," +
+
+            " ('Guerra de facciones 1','Guerra','27/11/2021',0)," +
+            " ('Guerra de facciones 2','Guerra','02/12/2021',0)," +
+            " ('Guerra de facciones 3','Guerra','14/12/2021',0)," +
+            " ('Guerra de facciones 4','Guerra','02/12/2021',1)," +
+            " ('Guerra de facciones 5','Guerra','11/12/2021',1)," +
+            " ('Guerra de facciones 6','Guerra','21/12/2021',2)," +
+            " ('Guerra de facciones 7','Guerra','07/12/2021',3)," +
+            " ('Guerra de facciones 8','Guerra','09/12/2021',4)," +
+            " ('Guerra de facciones 9','Guerra','18/12/2021',5)," +
+            " ('Guerra de facciones 10','Guerra','23/12/2021',6)," +
+            " ('Guerra de facciones 11','Guerra','22/12/2021',7)," +
+            " ('Guerra de facciones 12','Guerra','28/12/2021',8)," +
+            " ('Guerra de facciones 13','Guerra','03/12/2021',9)," +
+            " ('Guerra de facciones 14','Guerra','26/12/2021',10)," +
+            " ('Guerra de facciones 15','Guerra','02/01/2022',3)," +
+            " ('Guerra de facciones 16','Guerra','03/01/2022',6)," +
+            " ('Guerra de facciones 17','Guerra','04/01/2022',8)," +
+            " ('Guerra de facciones 18','Guerra','05/01/2022',5)," +
+            " ('Guerra de facciones 19','Guerra','07/01/2022',6)," +
+            " ('Guerra de facciones 20','Guerra','10/01/2022',8);";
 
     private static final String INSERT_ASENTAMIENTO = "INSERT INTO t_asentamiento VALUES (0,'Aguas Fétidas','pueblo',1,0)," +
             " (1,'Bosque Luminoso','ciudad',1,1)," +
